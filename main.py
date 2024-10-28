@@ -172,27 +172,22 @@ st.write(" To prepare for machine learning we categorized the needed datatype fo
 
 # Min-Max Scaling (Normalization)
 
-# initialising the MinMaxScaler
 scaler = MinMaxScaler(feature_range=(0, 1))
 
-# Numerical columns
 num_col_ = [col for col in X1.columns if X1[col].dtype != 'object']
 X1 = X1
-# learning the statistical parameters for each of the data and transforming
+
 X1[num_col_] = scaler.fit_transform(X1[num_col_])
 X1.head()
 
-# Min-Max Scaling (Normalization)
 st.subheader('Min-Max Scaling (Normalization)')
 
-# Initializing the MinMaxScaler
 scaler = MinMaxScaler(feature_range=(0, 1))
 
-# Numerical columns
 num_col_ = [col for col in X1.columns if X1[col].dtype != 'object']
 X1[num_col_] = scaler.fit_transform(X1[num_col_])
 
-# Display the scaled features
+
 st.write('Scaled Features (X1):')
 st.dataframe(X1)
 
@@ -205,10 +200,9 @@ automationRisk_list = df['Automation_Risk'].unique().tolist()
 automationRisk_counts = df['Automation_Risk'].value_counts()
 automationRisk_counts_list = automationRisk_counts.tolist()
 
-# Pie chart for the Summary column
 def pie_chart_AutomationRisk():
 
-  # autopct defines the wedges or the numeric values shown in the pie chart
+ 
   plt.pie(automationRisk_counts_list, labels=automationRisk_list, autopct='%1.1f%%')
   plt.title('Pie Chart of Automation Risk')
   st.pyplot(plt)
