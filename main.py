@@ -629,6 +629,7 @@ jobGrowth_counts_list = jobGrowth_counts.values
 
 # Function to create a bar chart
 def bar_chart_JobGrowth():
+    plt.clf()
     colors = plt.cm.Paired(np.linspace(0, 1, len(jobGrowth_counts_list)))  # Creates different colors for each bar
     plt.bar(jobGrowth_list, jobGrowth_counts_list, color=colors)
     plt.xlabel('Job Growth Category')
