@@ -273,7 +273,11 @@ elif st.session_state.page_selection == "data_cleaning":
     duplicates = dataset[dataset.duplicated(keep=False)]
     st.dataframe(duplicates)
     st.write(f"### Number of duplicate rows: {dataset.duplicated().sum()}")  
-    st.write("#### There are no duplicate rows found on the dataframe.")
+    st.info("#### There are no duplicate rows found on the dataframe.")
+    
+    st.subheader("Null Values of each Attributes")
+    st.write(dataset.isnull().sum())
+    st.info("#### There are no null values found on the dataframe.")
     
     st.header("Column Classification")
 
