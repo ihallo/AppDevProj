@@ -260,7 +260,7 @@ elif st.session_state.page_selection == "eda":
             names=automationRisk_list,
             values=automationRisk_counts_list,
             title='Pie Chart of Automation Risk',
-            hole=0.0  # Optional, for a solid pie chart. Set `hole=0.3` for a donut chart.
+            hole=0.0 
                 )
                 st.plotly_chart(fig)
             pie_chart_AutomationRisk()
@@ -311,14 +311,15 @@ elif st.session_state.page_selection == "eda":
            
         st.markdown('##### Job Growth Distribution')
         def bar_chart_JobGrowth():
-            plt.clf() 
-            colors = plt.cm.Paired(np.linspace(0, 1, len(jobGrowth_counts_list)))  
-            plt.bar(jobGrowth_list, jobGrowth_counts_list, color=colors)
-            plt.xlabel('Job Growth Category')
-            plt.ylabel('Count')
-            plt.title('Bar Chart of Job Growth Projection')
-            plt.xticks(rotation=0)
-            st.pyplot(plt)
+            fig = px.bar(
+                x=jobGrowth_list,  
+                y=jobGrowth_counts_list,  
+                title='Bar Chart of Job Growth Projection',
+                labels={'x': 'Job Growth Category', 'y': 'Count'},  
+                color=jobGrowth_list,  
+                color_discrete_sequence=px.colors.qualitative.Paired  
+         )
+            st.plotly_chart(fig)
         bar_chart_JobGrowth()   
     
     with col[1]:
