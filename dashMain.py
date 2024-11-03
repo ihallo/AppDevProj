@@ -247,7 +247,7 @@ elif st.session_state.page_selection == "eda":
             - **Data**: [AI-Powered Job Market Insights Dataset](https://www.kaggle.com/datasets/arshid/iris-flower-dataset).
             - :green[Pie Chart]: Distribution of the Automation_Risk in the dataset.
             - :green[Bar Chart]: Distribution of the Job_Growth_Projection in the dataset.
-            - :green[Bar Chart]: Distribution of the Salary_Category in the dataset.
+            - :green[Line Chart]: Distribution of the Salary_Category in the dataset.
         ''')
 
     col = st.columns((3, 2, 2, 2), gap='small')
