@@ -254,12 +254,16 @@ elif st.session_state.page_selection == "eda":
 
     # Automation Risk Distribution Pie Chart
     with col[0]:
-        st.markdown('##### Automation Risk Distribution')
-        def pie_chart_AutomationRisk():
-            plt.pie(automationRisk_counts_list, labels=automationRisk_list, autopct='%1.1f%%')
-            plt.title('Pie Chart of Automation Risk')
-            st.pyplot(plt)
-        pie_chart_AutomationRisk()
+            st.markdown('##### Automation Risk Distribution')
+            def pie_chart_AutomationRisk():
+                fig = px.pie(
+            names=automationRisk_list,
+            values=automationRisk_counts_list,
+            title='Pie Chart of Automation Risk',
+            hole=0.0  # Optional, for a solid pie chart. Set `hole=0.3` for a donut chart.
+                )
+                st.plotly_chart(fig)
+            pie_chart_AutomationRisk()
     
     with col[1]:
         
