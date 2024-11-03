@@ -250,7 +250,7 @@ elif st.session_state.page_selection == "eda":
             - :green[Bar Chart]: Distribution of the Salary_Category in the dataset.
         ''')
 
-    col = st.columns((2, 2, 2, 2), gap='small')
+    col = st.columns((3, 2, 2, 2), gap='small')
 
     # Automation Risk Distribution Pie Chart
     with col[0]:
@@ -260,7 +260,8 @@ elif st.session_state.page_selection == "eda":
             names=automationRisk_list,
             values=automationRisk_counts_list,
             title='Pie Chart of Automation Risk',
-            hole=0.0 
+            hole=0.0, 
+            height=600
                 )
                 st.plotly_chart(fig)
             pie_chart_AutomationRisk()
@@ -305,21 +306,25 @@ elif st.session_state.page_selection == "eda":
     st.header("💡 Insights")
     st.info("asdasdasdasdasjdnajkfnsdvjklsdnvjksdvnsdjkvnsdvjkernvjkwernvsjkdvnsdjkvnwsdvjknsdfjkls")
         
-    col = st.columns((2, 2, 2, 2), gap='small')
+    col = st.columns((3, 2, 2, 2), gap='small')
     
     with col[0]:
            
         st.markdown('##### Job Growth Distribution')
-        def bar_chart_JobGrowth():
-            plt.clf() 
-            colors = plt.cm.Paired(np.linspace(0, 1, len(jobGrowth_counts_list)))  
-            plt.bar(jobGrowth_list, jobGrowth_counts_list, color=colors)
-            plt.xlabel('Job Growth Category')
-            plt.ylabel('Count')
-            plt.title('Bar Chart of Job Growth Projection')
-            plt.xticks(rotation=0)
-            st.pyplot(plt)
-        bar_chart_JobGrowth()   
+        def bar_chart_Growth():
+                fig = px.bar(
+        x=jobGrowth_list,  
+        y=jobGrowth_counts_list,  
+        title='Bar Chart of Job Growth Projection',
+        labels={'x': 'Job Growth Category', 'y': 'Count'}, 
+        color=jobGrowth_list,  
+        color_discrete_sequence=px.colors.qualitative.Set3,
+        height=600
+    )
+                st.plotly_chart(fig)
+
+        bar_chart_Growth() 
+          
     
     with col[1]:
         
@@ -357,21 +362,22 @@ elif st.session_state.page_selection == "eda":
     st.header("💡 Insights")
     st.info("POtanignasdasjdnajkfnsdvjklsdnvjksdvnsdjkvnsdvjkernvjkwernvsjkdvnsdjkvnwsdvjknsdfjkls")
     
-    col = st.columns((2, 2, 2, 2), gap='small')
+    col = st.columns((3, 2, 2, 2), gap='small')
     
     with col[0]:
         
         st.markdown('##### Salary Category Distribution')
-        def bar_chart_SalaryCategory():
-            plt.clf() 
-            colors = plt.cm.Paired(np.linspace(0, 1, len(salaryCategory_counts_list))) 
-            plt.bar(salaryCategory_list, salaryCategory_counts_list, color=colors)
-            plt.xlabel('Salary Category')
-            plt.ylabel('Count')
-            plt.title('Bar Chart of Salary Category')
-            plt.xticks(rotation=0)
-            st.pyplot(plt)
-        bar_chart_SalaryCategory()     
+        def line_chart_SalaryCategory():
+                fig = px.line(
+                    x=salaryCategory_list, 
+                    y=salaryCategory_counts_list, 
+                    title=' Line Chart of Salary Category',
+                    labels={'x': 'Salary Category','y': 'Count'}, 
+                    markers=True, 
+                    height=600
+                )
+                st.plotly_chart(fig)
+        line_chart_SalaryCategory()  
     
     with col[1]:
         
@@ -778,13 +784,12 @@ elif st.session_state.page_selection == "machine_learning":
             x='Importance',
             y='Feature',
             labels={'Importance': 'Importance Score', 'Feature': 'Feature'},
-            orientation='h'  # Horizontal bar plot
+            orientation='h'  
         )
 
-        # Adjust the height and width
         feature_importance_fig.update_layout(
-            width=width,  # Set the width
-            height=height  # Set the height
+            width=width,  
+            height=height  
         )
 
         # Display the plot in Streamlit
