@@ -2,3 +2,10 @@ streamlit
 pandas
 altair
 plotly
+plotly-express
+matplotlib
+numpy
+scikit-learn
+pillow
+
+
