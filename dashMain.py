@@ -1093,7 +1093,7 @@ elif st.session_state.page_selection == "conclusion":
     # Your content for the CONCLUSION page goes here
     st.markdown("""
                 
-    Through exploratory data analysis and training of the classification model (`Random Forest Classifier`) on the ** AI-Powered Job Market Insights dataset**, the key insights and observations are:
+    Through exploratory data analysis and training of the classification model (`Random Forest Classifier`) on the **AI-Powered Job Market Insights dataset** , the key insights and observations are:
 
     #### 1. 📊 **Dataset Characteristics**:
     The dataset, which consists of 500 rows, includes important information such as Job_Growth_Projection, Automation_Risk, and Salary_USD. The balanced distribution of job types and qualities ensures a comprehensive knowledge of AI's impact on employment patterns without requiring extensive data rebalancing.
