@@ -1091,3 +1091,25 @@ elif st.session_state.page_selection == "conclusion":
     st.header("📝 Conclusion")
 
     # Your content for the CONCLUSION page goes here
+    st.markdown("""
+                
+    Through exploratory data analysis and training of the classification model (`Random Forest Classifier`) on the ** AI-Powered Job Market Insights dataset**, the key insights and observations are:
+
+    #### 1. 📊 **Dataset Characteristics**:
+    The dataset, which consists of 500 rows, includes important information such as Job_Growth_Projection, Automation_Risk, and Salary_USD. The balanced distribution of job types and qualities ensures a comprehensive knowledge of AI's impact on employment patterns without requiring extensive data rebalancing.
+
+    #### 2. 📝 **Feature Distributions and Separability**:
+    Different distributions for Job_Growth_Projection, Automation_Risk, and Salary_USD were found using an exploratory analysis. Higher salary in particular industries and company sizes, as well as variations in automation risk among AI-adopting firms, are some of the trends noted. AI_Adoption_Level's distribution across job categories demonstrates how adoption levels affect automation risk, particularly for tasks that are heavily automated.
+
+    #### 3. ⚙️ **Random Forest Classifier (Automation Risk Prediction)**:
+    The Random Forest Classifier model trained on Automation_Risk achieved high accuracy on training data (100%) but showed a notable performance drop (43.33%) on test data. Feature importance analysis indicated *Salary_USD* as the most influential feature, contributing 22%, followed by *Location_encoded* and *Skills_encoded* at approximately 13% each, reflecting the impact of salary and job location on automation risk.
+    
+    #### 4. 🚀 **Random Forest Classifier (Growth Prediction)**:
+    For Growth Prediction, the Random Forest Classifier displayed similar results, with 100% accuracy on training data and 42% on test data. Here, *Salary_USD* again emerged as the most significant predictor at 22%, followed by *Location_encoded* (17%) and *Industry_encoded* (14%), suggesting that job growth is influenced by salary and industry context.
+    
+    #### 5. 💸 **Random Forest Classifier (Salary Category Prediction)**:
+    The Salary Category model achieved 100% accuracy on training data and 58% on test data. In this model, *Salary_USD* was the dominant feature, contributing 22% to prediction accuracy, with *Location_encoded* and *Skills_encoded* also highly influential, reinforcing the relationship between salary, location, and required skills in classification tasks.
+    
+    #### **Summing up:**  
+    This experiment demonstrated the importance of feature-rich, balanced datasets, such as the AI-Powered Job Market Insights dataset, for comprehending the growth trends and automation risk of different professions. Using both Random Forest and Decision Tree Classifiers, we found that variables like *Salary_USD*, *Location*, and *Industry* were essential for predicting the risk and expansion of job automation. Strong model learning is shown by high training accuracy, but overfitting is suggested by the performance difference on test data, indicating that additional fine-tuning or complexity changes are needed for subsequent applications. The basis for evaluating AI's effects on job security and industry growth prospects is provided by this analysis.
+    """)
