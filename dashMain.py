@@ -663,7 +663,7 @@ elif st.session_state.page_selection == "machine_learning":
     # Call the function with appropriate arguments
     feature_importance_plot1(rfc_feature_importance_df, width=500, height=500, key='2')
     
-    st.markdown("""
+    st.info("""
     Upon running . `feature_importances` in the `Random Forest Classifier Model` to check how each Growth Prediction's features influence the training of our model, it is clear that Salary_USD holds the most influence in our model's decisions having 0.2235 or 22% importance. This is followed by Location_encoded, and Industry_encoded which is closely behind of Salary_USD having 0.17 or 17% importance followed closely by Skills_encoded with 0.14 or 14%.
     """)
     
@@ -755,7 +755,7 @@ elif st.session_state.page_selection == "machine_learning":
     # Call the function with appropriate arguments
     feature_importance_plot2(rfc_feature_importance_df, width=500, height=500, key='2')
     
-    st.markdown("""
+    st.info("""
     Upon running . `feature_importances` in the `Random Forest Classifier Model` to check how each Salary Category's features influence the training of our model, it is clear that Salary_USD holds the most influence in our model's decisions having 0.2253 or 22% importance. This is followed by Location_encoded, and Skills_encoded which is closely behind of Salary_USD having 0.1388 or 13% importance followed closely by Skills_encoded with 0.14 or 14%.
     """)
     
@@ -847,7 +847,7 @@ elif st.session_state.page_selection == "machine_learning":
     # Call the function with appropriate arguments
     feature_importance_plot3(rfc_feature_importance_df, width=500, height=500, key='2')
     
-    st.markdown("""
+    st.info("""
     Upon running . `feature_importances` in the `Random Forest Classifier Model` to check how each Automation_Risk's features influence the training of our model, it is clear that Salary_USD holds the most influence in our model's decisions having 0.2253 or 22% importance. This is followed by Location_encoded, and Skills_encoded which is closely behind of Salary_USD having 0.1388 or 13% importance followed closely by Skills_encoded with 0.14 or 14%.
     """)
 
