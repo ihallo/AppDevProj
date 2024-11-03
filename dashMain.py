@@ -299,7 +299,7 @@ elif st.session_state.page_selection == "eda":
         scatter_plot_Automation("Salary_USD", 400, 200, 9)
         
     st.header("💡 Insights")
-    st.info("POtanignasdasjdnajkfnsdvjklsdnvjksdvnsdjkvnsdvjkernvjkwernvsjkdvnsdjkvnwsdvjknsdfjkls")
+    st.info("asdasdasdasdasjdnajkfnsdvjklsdnvjksdvnsdjkvnsdvjkernvjkwernvsjkdvnsdjkvnwsdvjknsdfjkls")
         
     col = st.columns((2, 2, 2, 2), gap='small')
     
