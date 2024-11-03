@@ -108,6 +108,45 @@ salaryCategory_list = dataset['Salary_Category'].unique().tolist()
 salaryCategory_counts = dataset['Salary_Category'].value_counts()
 salaryCategory_counts_list = salaryCategory_counts.tolist()
 
+def scatter_plot_Automation(column, width, height, key):
+
+    # Generate a scatter plot
+    scatter_plot = px.scatter(dataset, x=dataset['Automation_Risk'], y=dataset[column])
+
+    # Adjust the height and width
+    scatter_plot.update_layout(
+        width=width,  # Set the width
+        height=height  # Set the height
+    )
+
+    st.plotly_chart(scatter_plot, use_container_width=True, key=f"auto_scatter_plot_{key}")
+
+def scatter_plot_Growth(column, width, height, key):
+
+    # Generate a scatter plot
+    scatter_plot = px.scatter(dataset, x=dataset['Job_Growth_Projection'], y=dataset[column])
+
+    # Adjust the height and width
+    scatter_plot.update_layout(
+        width=width,  # Set the width
+        height=height  # Set the height
+    )
+
+    st.plotly_chart(scatter_plot, use_container_width=True, key=f"growth_scatter_plot_{key}")
+    
+def scatter_plot_Salary(column, width, height, key):
+
+    # Generate a scatter plot
+    scatter_plot = px.scatter(dataset, x=dataset['Salary_Category'], y=dataset[column])
+
+    # Adjust the height and width
+    scatter_plot.update_layout(
+        width=width,  # Set the width
+        height=height  # Set the height
+    )
+
+    st.plotly_chart(scatter_plot, use_container_width=True, key=f"salary_scatter_plot_{key}")
+
 
 ##df_data
 
@@ -211,20 +250,62 @@ elif st.session_state.page_selection == "eda":
             - :green[Bar Chart]: Distribution of the Salary_Category in the dataset.
         ''')
 
-    col = st.columns((2, 2, 2), gap='small')
+    col = st.columns((2, 2, 2, 2), gap='small')
 
     # Automation Risk Distribution Pie Chart
     with col[0]:
-        st.markdown('#### Automation Risk Distribution')
+        st.markdown('##### Automation Risk Distribution')
         def pie_chart_AutomationRisk():
             plt.pie(automationRisk_counts_list, labels=automationRisk_list, autopct='%1.1f%%')
             plt.title('Pie Chart of Automation Risk')
             st.pyplot(plt)
         pie_chart_AutomationRisk()
-        
-    # Job Growth Distribution Bar Chart
+    
     with col[1]:
-        st.markdown('#### Job Growth Distribution')
+        
+        st.markdown('###### Job Title by Automation Risk')
+        scatter_plot_Automation("Job_Title", 400, 200, 1)
+        
+        st.markdown('###### Industry by Automation Risk')
+        scatter_plot_Automation("Industry", 400, 200, 2)
+
+        st.markdown('###### Company_Size by Automation Risk')
+        scatter_plot_Automation("Company_Size", 400, 200, 3)
+        
+        
+        
+    with col[2]:
+        
+        st.markdown('###### Location by Automation Risk')
+        scatter_plot_Automation("Location", 400, 200, 4)
+        
+        st.markdown('###### AI Adoption Level by Automation Risk')
+        scatter_plot_Automation("AI_Adoption_Level", 400, 200, 5)
+        
+        st.markdown('###### Required Skills by Automation Risk')
+        scatter_plot_Automation("Required_Skills", 400, 200, 6)
+        
+        
+        
+    with col[3]:   
+        
+        st.markdown('###### Remote Friendly by Automation Risk')
+        scatter_plot_Automation("Remote_Friendly", 400, 200, 7)
+        
+        st.markdown('###### Job Growth Projection by Automation Risk')
+        scatter_plot_Automation("Job_Growth_Projection", 400, 200, 8)
+        
+        st.markdown('###### Salary by Automation Risk')
+        scatter_plot_Automation("Salary_USD", 400, 200, 9)
+        
+    st.header("💡 Insights")
+    st.info("POtanignasdasjdnajkfnsdvjklsdnvjksdvnsdjkvnsdvjkernvjkwernvsjkdvnsdjkvnwsdvjknsdfjkls")
+        
+    col = st.columns((2, 2, 2, 2), gap='small')
+    
+    with col[0]:
+           
+        st.markdown('##### Job Growth Distribution')
         def bar_chart_JobGrowth():
             plt.clf() 
             colors = plt.cm.Paired(np.linspace(0, 1, len(jobGrowth_counts_list)))  
@@ -234,11 +315,49 @@ elif st.session_state.page_selection == "eda":
             plt.title('Bar Chart of Job Growth Projection')
             plt.xticks(rotation=0)
             st.pyplot(plt)
-        bar_chart_JobGrowth()
+        bar_chart_JobGrowth()   
+    
+    with col[1]:
+        
+        st.markdown('###### Job Title by Job Growth Projection')
+        scatter_plot_Growth("Job_Title", 400, 200, 1)
+        
+        st.markdown('###### Industry by Job Growth Projection')
+        scatter_plot_Growth("Industry", 400, 200, 2)
 
-    # Salary Category Distribution Bar Chart
+        st.markdown('###### Company_Size by Job Growth Projection')
+        scatter_plot_Growth("Company_Size", 400, 200, 3)  
+        
     with col[2]:
-        st.markdown('#### Salary Category Distribution')
+        
+        st.markdown('###### Location by Job Growth Projection')
+        scatter_plot_Growth("Location", 400, 200, 4)
+        
+        st.markdown('###### AI Adoption Level by Job Growth Projection')
+        scatter_plot_Growth("AI_Adoption_Level", 400, 200, 5)
+        
+        st.markdown('###### Required Skills by Job Growth Projection')
+        scatter_plot_Growth("Required_Skills", 400, 200, 6) 
+        
+    with col[3]:   
+        
+        st.markdown('###### Remote Friendly by Job Growth Projection')
+        scatter_plot_Growth("Remote_Friendly", 400, 200, 7)
+        
+        st.markdown('###### Automation Risk by Job Growth Projection')
+        scatter_plot_Growth("Automation_Risk", 400, 200, 8)
+        
+        st.markdown('###### Salary by Job Growth Projection')
+        scatter_plot_Growth("Salary_USD", 400, 200, 9)
+
+    st.header("💡 Insights")
+    st.info("POtanignasdasjdnajkfnsdvjklsdnvjksdvnsdjkvnsdvjkernvjkwernvsjkdvnsdjkvnwsdvjknsdfjkls")
+    
+    col = st.columns((2, 2, 2, 2), gap='small')
+    
+    with col[0]:
+        
+        st.markdown('##### Salary Category Distribution')
         def bar_chart_SalaryCategory():
             plt.clf() 
             colors = plt.cm.Paired(np.linspace(0, 1, len(salaryCategory_counts_list))) 
@@ -248,10 +367,43 @@ elif st.session_state.page_selection == "eda":
             plt.title('Bar Chart of Salary Category')
             plt.xticks(rotation=0)
             st.pyplot(plt)
-        bar_chart_SalaryCategory()
+        bar_chart_SalaryCategory()     
+    
+    with col[1]:
         
-     # Insights Section
+        st.markdown('###### Job Title by Salary Category')
+        scatter_plot_Salary("Job_Title", 400, 200, 1)
+        
+        st.markdown('###### Industry by Salary Category')
+        scatter_plot_Salary("Industry", 400, 200, 2)
+
+        st.markdown('###### Company_Size by Salary Category')
+        scatter_plot_Salary("Company_Size", 400, 200, 3)  
+        
+    with col[2]:
+        
+        st.markdown('###### Location by Salary Category')
+        scatter_plot_Salary("Location", 400, 200, 4)
+        
+        st.markdown('###### AI Adoption Level by Salary Category')
+        scatter_plot_Salary("AI_Adoption_Level", 400, 200, 5)
+        
+        st.markdown('###### Required Skills by Salary Category')
+        scatter_plot_Salary("Required_Skills", 400, 200, 6) 
+        
+    with col[3]:   
+        
+        st.markdown('###### Remote Friendly by Salary Category')
+        scatter_plot_Salary("Remote_Friendly", 400, 200, 7)
+        
+        st.markdown('###### Automation Risk by Salary Category')
+        scatter_plot_Salary("Automation_Risk", 400, 200, 8)
+        
+        st.markdown('###### Job Growth Projection by Salary Category')
+        scatter_plot_Salary("Job_Growth_Projection", 400, 200, 9)
+
     st.header("💡 Insights")
+    st.info("POtanignasdasjdnajkfnsdvjklsdnvjksdvnsdjkvnsdvjkernvjkwernvsjkdvnsdjkvnwsdvjknsdfjkls")
     
 # Data Cleaning Page
 elif st.session_state.page_selection == "data_cleaning":
