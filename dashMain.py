@@ -265,18 +265,18 @@ elif st.session_state.page_selection == "data_cleaning":
     info = buffer.getvalue()  
     st.text(info)
 
-    st.info("#### As we can see from the DataFrame information, there are no null values in any of the data types. Based on this, we can conclude that there are no data columns that need to be dropped.")
+    st.info("As we can see from the DataFrame information, there are no null values in any of the data types. Based on this, we can conclude that there are no data columns that need to be dropped.")
 
+    st.subheader("Null Values of each Attributes")
+    st.write(dataset.isnull().sum())
+    st.info("There are no null values found on the dataframe.")
+    
     st.subheader("Duplicate Rows")
 
     duplicates = dataset[dataset.duplicated(keep=False)]
     st.dataframe(duplicates)
     st.write(f"### Number of duplicate rows: {dataset.duplicated().sum()}")  
-    st.info("#### There are no duplicate rows found on the dataframe.")
-    
-    st.subheader("Null Values of each Attributes")
-    st.write(dataset.isnull().sum())
-    st.info("#### There are no null values found on the dataframe.")
+    st.info("There are no duplicate rows found on the dataframe.")
     
     st.header("Column Classification")
 
@@ -340,9 +340,9 @@ elif st.session_state.page_selection == "data_cleaning":
 
     # Observation section for insights
     st.info("""
-                ### We used `df[cat_col].nunique()` to identify the number of unique values in each categorical column. 
-                ### The analysis shows that the dataset's categorical columns are properly initialized, confirmed using the `.unique()` method. 
-                ### There is only one numerical column (e.g., `Salary_USD`), which was included in the analysis.
+                - We used `df[cat_col].nunique()` to identify the number of unique values in each categorical column. 
+                - The analysis shows that the dataset's categorical columns are properly initialized, confirmed using the `.unique()` method. 
+                - There is only one numerical column (e.g., `Salary_USD`), which was included in the analysis.
                 """)
     st.markdown("---")
     
