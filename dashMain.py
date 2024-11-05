@@ -304,7 +304,15 @@ elif st.session_state.page_selection == "eda":
         scatter_plot_Automation("Salary_USD", 400, 200, 9)
         
     st.header("💡 Insights")
-    st.info("asdasdasdasdasjdnajkfnsdvjklsdnvjksdvnsdjkvnsdvjkernvjkwernvsjkdvnsdjkvnwsdvjknsdfjkls")
+    st.info("""
+            
+            - A fair assessment of automation risk across the dataset's different job attributes is given by the charts. An equitable distribution can be seen in the pie chart: 31.6% of jobs are medium risk, 34.6% are high risk, and 33.8% are low risk. This implies that a wide variety of employment are impacted by automation, with no specific category being impacted more than others.
+
+            - Automation risk seems to be evenly distributed for particular job titles (such as Operations Manager, Product Manager) and locations (such as Toronto, Paris, and Tokyo), suggesting that neither factor significantly affects risk levels. Similarly, there are no significant differences in remote-friendly occupations, industry type, or company size, indicating that these variables do not significantly connect with automation risk.
+
+            - AI adoption levels, job growth projections, and required skills like Communication, Machine Learning, and UX/UI Design also display an even distribution of automation risk, implying no specific skills or adoption levels are more susceptible to automation. Salary categories, too, are spread across all risk levels, showing that higher or lower salaries do not predict automation risk.
+
+            - In conclusion, the data shows that automation risk is widely distributed across several job attributes, impacting a wide range of occupations, industries, and skill levels nearly equally. This wide-ranging effect emphasizes how crucial flexible approaches are as technology affects different kinds of jobs in different sectors.""")
         
     col = st.columns((3, 2, 2, 2), gap='small')
     
@@ -360,7 +368,12 @@ elif st.session_state.page_selection == "eda":
         scatter_plot_Growth("Salary_USD", 400, 200, 9)
 
     st.header("💡 Insights")
-    st.info("POtanignasdasjdnajkfnsdvjklsdnvjksdvnsdjkvnsdvjkernvjkwernvsjkdvnsdjkvnwsdvjknsdfjkls")
+    st.info("""
+            
+            - A balanced perspective of job growth estimates across the dataset's many job qualities is given by the charts. Jobs are nearly equally likely to increase, decrease, or stay the same, according to the bar chart, suggesting a balanced outlook. All growth categories have specific job titles, such as operations manager, product manager, sales manager, and cybersecurity analyst, indicating that a job's title does not significantly influence its potential for growth.Furthermore, businesses like energy, telecommunications, education, and entertainment, as well as jobs that are conducive to remote work, exhibit an even distribution across growth, decline, and stability, indicating that these elements do not significantly affect the potential for job growth.
+
+            - A comparable distribution is shown across all employment growth estimates for variables such as the degree of AI deployment, automation risk, company size, necessary skills, and pay levels. With abilities like communication, machine learning, JavaScript, and UX/UI design applicable across the board, this distribution suggests that these attributes have little bearing on the likelihood of job growth or decline. In general, the potential for job development is widely dispersed, indicating a diverse labor market with growth opportunities not restricted to certain positions, regions, or sectors. This emphasizes how crucial adaptability and flexibility are in a changing labor market.""")
+        
     
     col = st.columns((3, 2, 2, 2), gap='small')
     
@@ -413,7 +426,12 @@ elif st.session_state.page_selection == "eda":
         scatter_plot_Salary("Job_Growth_Projection", 400, 200, 9)
 
     st.header("💡 Insights")
-    st.info("POtanignasdasjdnajkfnsdvjklsdnvjksdvnsdjkvnsdvjkernvjkwernvsjkdvnsdjkvnwsdvjknsdfjkls")
+    st.info("""
+            
+            - According to the salary category distribution, senior-level positions are the least common, while entry-level roles make up the majority of the dataset. There is room for career progression in positions with titles like operations manager, product manager, sales manager, and cybersecurity analyst, which are available at all pay levels. Similarly, entry-, mid-, and senior-level jobs are offered in places like Toronto, Paris, Tokyo, and Dubai, indicating that there are plenty of career opportunities with different pay scales available abroad. Remote work flexibility is available at various career levels, as evidenced by the fact that both remote-friendly and non-remote roles are distributed throughout all wage categories.
+
+            - Jobs in all pay ranges can be found in industries like energy, telecommunications, education, and entertainment, indicating that advancement from entry-level to senior positions is feasible in these fields. As occupations with different levels of automation risk and AI usage offer a range of incomes, the data indicates that automation risk and AI adoption levels (high, medium, and low) do not significantly effect salary. There seem to be prospects for advancement at every income level, regardless of the size of the company—small, medium, or large. Every career level benefits from having abilities like communication, machine learning, JavaScript, and UX/UI design, which are in demand throughout entry, mid, and senior income categories.""")
+        
     
 # Data Cleaning Page
 elif st.session_state.page_selection == "data_cleaning":
@@ -919,6 +937,21 @@ elif st.session_state.page_selection == "machine_learning":
     st.info("""
     Upon running . `feature_importances` in the `Random Forest Classifier Model` to check how each Salary Category's features influence the training of our model, it is clear that Salary_USD holds the most influence in our model's decisions having 0.2253 or 22% importance. This is followed by Location_encoded, and Skills_encoded which is closely behind of Salary_USD having 0.1388 or 13% importance followed closely by Skills_encoded with 0.14 or 14%.
     """)
+    
+    print(f"Number of trees made: {len(clf_automation.estimators_)}")
+
+    st.subheader("Number of Trees")
+    st.code("""
+
+    print(f"Number of trees made: {len(clf_automation.estimators_)}")
+     
+    """)
+
+    st.markdown("**Number of trees made:** 100")
+    
+    st.subheader("Plotting the Forest")
+    
+    
     
     st.markdown("---")
     
