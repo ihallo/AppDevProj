@@ -236,6 +236,7 @@ elif st.session_state.page_selection == "dataset":
     
     st.subheader("Descriptive Statistics")
     st.dataframe(dataset.describe(), use_container_width=True)
+    st.info("Text")
 
 # EDA Page
 elif st.session_state.page_selection == "eda":
