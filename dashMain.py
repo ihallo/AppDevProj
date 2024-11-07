@@ -449,7 +449,11 @@ elif st.session_state.page_selection == "data_cleaning":
     st.info("As we can see from the DataFrame information, there are no null values in any of the data types. Based on this, we can conclude that there are no data columns that need to be dropped.")
 
     st.subheader("Null Values of each Attributes")
-    st.write(dataset.isnull().sum())
+    col = st.columns(( 2, 2), gap='small')
+    with col[0]:
+        st.write(dataset.isnull().sum())
+    with col[1]:
+        st.write(dataset.isna().sum())
     st.info("There are no null values found on the dataframe.")
     
     st.subheader("Duplicate Rows")
