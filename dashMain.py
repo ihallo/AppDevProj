@@ -236,7 +236,7 @@ elif st.session_state.page_selection == "dataset":
     
     st.subheader("Descriptive Statistics")
     st.dataframe(dataset.describe(), use_container_width=True)
-    st.info("Text")
+    st.info("The dataset includes 500 salary data points with an average salary of USD 91,222.39. Salaries range from a minimum of USD 31,969.53 to a maximum of USD 155,209.82. The standard deviation is USD 20,504.29, indicating moderate variability. The median salary is USD 91,998.20, with 25% of salaries below USD 78,511.51 and 75% below USD 103,971.28.")
 
 # EDA Page
 elif st.session_state.page_selection == "eda":
