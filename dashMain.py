@@ -1078,7 +1078,7 @@ elif st.session_state.page_selection == "machine_learning":
     Upon running . `feature_importances` in the `Random Forest Classifier Model` to check how each Salary Category's features influence the training of our model, it is clear that Salary_USD holds the most influence in our model's decisions having 0.2253 or 22% importance. This is followed by Location_encoded, and Skills_encoded which is closely behind of Salary_USD having 0.1388 or 13% importance followed closely by Skills_encoded with 0.14 or 14%.
     """)
     
-    print(f"Number of trees made: {len(clf_automation.estimators_)}")
+    st.markdown(f"#### Number of Trees: {len(clf_automation.estimators_)}")
 
     st.subheader("Number of Trees")
     st.code("""
@@ -1294,7 +1294,7 @@ elif st.session_state.page_selection == "machine_learning":
     st.code("""
         print(f"Number of trees made: {len(clf_automation.estimators_)}")
         """)
-    st.subheader(f"#### Number of Trees: {len(clf_automation.estimators_)}")
+    st.markdown(f"#### Number of Trees: {len(clf_automation.estimators_)}")
     
     st.subheader("Plotting the Forest")
     
