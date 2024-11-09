@@ -841,7 +841,7 @@ for Salary_Category_Projection in salaryCategory_counts.index:
 
     st.session_state['importance_df_Salary'] = importance_df_Salary.sort_values(by='Importance_Salary', ascending=False).reset_index(drop=True)
 
-# Machine Learning Page
+    # Machine Learning Page
 elif st.session_state.page_selection == "machine_learning":
     st.header("🤖 Machine Learning")
 
