@@ -1241,26 +1241,16 @@ elif st.session_state.page_selection == "machine_learning":
     # Example DataFrame to illustrate (replace this with your actual importance DataFrame)
     rfc_feature_importance_df = pd.DataFrame({
         'Feature': [
-        'Salary_USD',
         'Skills_encoded',
         'Industry_encoded',
-        'Job_encoded',
         'Location_encoded',
-        'AI_Adoption_encoded',
-        'Automation_encoded',
-        'Size_encoded',
-        'Remote_encoded'
+        'Job_encoded',
     ],
     'Importance': [
-        0.22528175689171243,  # Salary_USD
-        0.13880741712136976,  # Skills_encoded
-        0.1364568017263118,   # Industry_encoded
-        0.13600111833404468,  # Job_encoded
-        0.1322094777615761,   # Location_encoded
-        0.06566605173639027,  # AI_Adoption_encoded
-        0.06424098181751703,  # Automation_encoded
-        0.0613686496097606,   # Size_encoded
-        0.03996774500131726    # Remote_encoded
+        0.2692,  # Skills_encoded
+        0.2545,   # Industry_encoded
+        0.2416,  # Location_encoded
+        0.2347,   # Job_encoded
     ]
     })
 
