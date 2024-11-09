@@ -612,7 +612,7 @@ elif st.session_state.page_selection == "data_cleaning":
     st.write('Training Features (X1_train):')
     st.dataframe(X1_train)
     
-    st.session_state['X1_train'] == X1_train
+    st.session_state['X1_train'] = X1_train
 
     st.write('Testing Features (X1_test):')
     st.dataframe(X1_test)
