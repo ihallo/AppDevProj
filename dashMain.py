@@ -740,29 +740,34 @@ elif st.session_state.page_selection == "data_cleaning":
 
     st.code("""new_df = dataset""")
     new_df = dataset
+    st.info("Creating a copy of the original dataset for further processing.")
 
     st.write(new_df.head())
-    st.info("Creating a copy of the original dataset for further processing.")
+    st.info("Displayed the first few rows of the dataset to verify its structure and contents.")
 
     salaryCategory_counts = new_df['Salary_Category'].value_counts()
     st.write(salaryCategory_counts)
+    st.info("The count of each salary category is displayed, providing an overview of the dataset distribution by salary level.")
 
     # Assuming your DataFrame is named 'weather_df_new'
     selected_salaryCategory = ["Mid Level", "Senior Level"]
 
     # Filter the DataFrame to keep only the desired summaries
     new_df_filtered = new_df[new_df['Salary_Category'].isin(selected_salaryCategory)]
+    st.info("Filtered the dataset to include only 'Mid Level' and 'Senior Level' salary categories.")
 
     # Reset the index if needed
     new_df_filtered = new_df_filtered.reset_index(drop=True)
-
     st.write(new_df_filtered.head())
+    st.info("Reset the index of the filtered DataFrame and displayed the first few rows to ensure only selected categories are present.")
 
     salaryCategory_counts = new_df_filtered['Salary_Category'].value_counts()
     st.write(salaryCategory_counts)
+    st.info("Displayed the count of salary categories within the filtered dataset.")
 
     # Initialize an empty dataframe to store balanced data
     balanced_new_df = pd.DataFrame()
+    st.info("Initialized an empty DataFrame to store a balanced sample of data.")
 
     # Loop through each category and sample 6547 rows (for Overcast, we'll use all rows)
     for Salary_Category_Projection in salaryCategory_counts.index:
@@ -776,6 +781,7 @@ elif st.session_state.page_selection == "data_cleaning":
 
     # Reset index if necessary
     balanced_new_df.reset_index(drop=True, inplace=True)
+    st.info("Balanced the dataset by sampling each salary category equally and reset the index for better organization.")
 
     # Now, 'balanced_weather_df' contains the balanced rows
     st.write(balanced_new_df['Salary_Category'].value_counts())
@@ -783,10 +789,11 @@ elif st.session_state.page_selection == "data_cleaning":
     st.code( """ balanced_new_df['Salary_encoded'] = growth_encoder.fit_transform(balanced_new_df['Salary_Category']) """)
     balanced_new_df['Salary_encoded'] = growth_encoder.fit_transform(balanced_new_df['Salary_Category'])
     st.write(balanced_new_df.head())
+    st.info("Encoded the 'Salary_Category' column into numerical values for machine learning compatibility.")
     
     st.write(balanced_new_df['Salary_Category'].unique())
-
     st.write(balanced_new_df['Salary_encoded'].unique())
+    st.info("Displayed unique values of both the original and encoded salary categories for verification.")
 
     st.code("""
     # Mapping of the Summary and their encoded equivalent
@@ -803,11 +810,13 @@ elif st.session_state.page_selection == "data_cleaning":
     balanced_salaryCategory_mapping_df = pd.DataFrame({'Summary': balanced_unique_salaryCategory, 'Summary_Encoded': balanced_unique_salaryCategory_encoded})
     # Display the DataFrame
     st.write(balanced_salaryCategory_mapping_df)
+    st.info("Mapped each unique salary category to its corresponding encoded value for reference.")
 
     balanced_new_df['Job_encoded'] = job_encoder.fit_transform(balanced_new_df['Job_Title'])
     balanced_new_df['Industry_encoded'] = industry_encoder.fit_transform(balanced_new_df['Industry'])
     balanced_new_df['Location_encoded'] = location_encoder.fit_transform(balanced_new_df['Location'])
     balanced_new_df['Skills_encoded'] = skills_encoder.fit_transform(balanced_new_df['Required_Skills'])
+    st.info("Encoded categorical features into numerical values for compatibility with machine learning models.")
 
     # Select features and target variable
     features = ['Job_encoded', 'Industry_encoded', 'Location_encoded', 'Skills_encoded']
@@ -817,9 +826,11 @@ elif st.session_state.page_selection == "data_cleaning":
     st.code("""features = ['Job_encoded', 'Industry_encoded', 'Location_encoded', 'Skills_encoded']
     X5 = df_data[features]
     Y5 = df_data['Salary_encoded']""")
+    st.info("Defined the feature set and target variable for model training.")
     
     X5_train, X5_test, Y5_train, Y5_test = train_test_split(X5, Y5, test_size=0.3, random_state=42)
     st.code("""X5_train, X5_test, Y5_train, Y5_test = train_test_split(X5, Y5, test_size=0.3, random_state=42)""")
+    st.info("Split the dataset into training and testing sets, with 70% for training to enhance model learning.")
 
     st.write('Training Features (X5_train):')
     st.dataframe(X5_train)
@@ -832,15 +843,19 @@ elif st.session_state.page_selection == "data_cleaning":
 
     st.write('Testing Target Variable (Y5_test):')
     st.dataframe(Y5_test)
+    st.info("Displayed the training and testing sets for both features and target variables.")
     
     clf_salary2nd.fit(X5_train, Y5_train)
+    st.info("Trained the model on the training data.")
     
     y_pred = clf_salary2nd.predict(X5_test)
+    st.info("Generated predictions on the test data.")
     
     train_accuracy = clf_salary2nd.score(X5_train, Y5_train) #train daTa
     test_accuracy = clf_salary2nd.score(X5_test, Y5_test) #test daTa
     st.write(f'Train Accuracy: {train_accuracy * 100:.2f}%')
     st.write(f'Test Accuracy: {test_accuracy * 100:.2f}%')
+    st.info("Displayed the training and testing accuracy to assess model performance.")
     
     importance_df_Salary = pd.DataFrame({
         'Feature': X5.columns,
@@ -848,6 +863,7 @@ elif st.session_state.page_selection == "data_cleaning":
     })
 
     st.session_state['importance_df_Salary'] = importance_df_Salary.sort_values(by='Importance_Salary', ascending=False).reset_index(drop=True)
+    st.info("Calculated and displayed the feature importance, sorted by their influence on the model's predictions.")
 
     # Machine Learning Page
 elif st.session_state.page_selection == "machine_learning":
