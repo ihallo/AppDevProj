@@ -766,7 +766,7 @@ for Salary_Category_Projection in salaryCategory_counts.index:
     # Append the sampled data to the balanced dataframe
     balanced_new_df = pd.concat([balanced_new_df, sampled_df])
 
-Reset index if necessary
+    # Reset index if necessary
     balanced_new_df.reset_index(drop=True, inplace=True)
 
     # Now, 'balanced_weather_df' contains the balanced rows
