@@ -1188,7 +1188,7 @@ elif st.session_state.page_selection == "machine_learning":
     Upon running . `feature_importances` in the `Random Forest Classifier Model` to check how each Automation_Risk's features influence the training of our model, it is clear that Salary_USD holds the most influence in our model's decisions having 0.2253 or 22% importance. This is followed by Location_encoded, and Skills_encoded which is closely behind of Salary_USD having 0.1388 or 13% importance followed closely by Skills_encoded with 0.14 or 14%.
     """)
 
-st.subheader("Training the 2nd Random Forest Classifier model for Salary Category")
+    st.subheader("Training the 2nd Random Forest Classifier model for Salary Category")
     
     st.code("""
     * clf_salary2nd = joblib.load('models/RFC_salary2nd.joblib')
@@ -1294,7 +1294,6 @@ st.subheader("Training the 2nd Random Forest Classifier model for Salary Categor
     
     
     st.markdown("---")
-
 
 # Prediction Page
 elif st.session_state.page_selection == "prediction":
