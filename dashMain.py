@@ -997,8 +997,6 @@ elif st.session_state.page_selection == "machine_learning":
     
     st.subheader("Plotting the Forest")
     
-    
-    
     st.code("""
     
     # Show all trees made
@@ -1025,6 +1023,10 @@ elif st.session_state.page_selection == "machine_learning":
     plt.tight_layout()
     st.pyplot(plt) """)
     
+    dt_automation_image = Image.open('assets/automationRiskTree.png')
+    st.image(dt_automation_image, caption='Random Forest classifier - Automation Risk - Tree Plot')
+    
+    st.info("This graph shows **all of the decision trees** made by our **Random Forest Classifier** model for the Automation Risk which then forms a **Forest**.")
     st.markdown("---")
     
     st.subheader("Training the Random Forest Classifier model for Growth Prediction")
