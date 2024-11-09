@@ -1027,6 +1027,21 @@ elif st.session_state.page_selection == "machine_learning":
     st.image(dt_automation_image, caption='Random Forest classifier - Automation Risk - Tree Plot')
     
     st.info("This graph shows **all of the decision trees** made by our **Random Forest Classifier** model for the Automation Risk which then forms a **Forest**.")
+    
+    st.code("""
+            # Extract a single tree from the Random Forest
+            single_tree = clf_automation.estimators_[0]
+
+            # Plot the tree
+            plt.figure(figsize=(20, 10))
+            plot_tree(single_tree, feature_names=X1_train.columns, filled=True, rounded=True)
+            plt.show()
+            """)
+    
+    dt_automation_image = Image.open('assets/automationRiskSingleTree.png')
+    st.image(dt_automation_image, caption='Random Forest classifier - Automation Risk - Single Tree Plot')
+    st.info("This graph shows **a single tree ** made by our **Random Forest Classifier** model.")
+    
     st.markdown("---")
     
     st.subheader("Training the Random Forest Classifier model for Growth Prediction")
