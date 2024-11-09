@@ -13,6 +13,8 @@ from sklearn.ensemble import RandomForestClassifier
 from PIL import Image
 from sklearn.metrics import accuracy_score
 import joblib
+from sklearn.tree import plot_tree
+
 
 #######################
 # Page configuration
@@ -609,6 +611,8 @@ elif st.session_state.page_selection == "data_cleaning":
     
     st.write('Training Features (X1_train):')
     st.dataframe(X1_train)
+    
+    st.session_state[X1_train] == X1_train
 
     st.write('Testing Features (X1_test):')
     st.dataframe(X1_test)
@@ -1261,17 +1265,36 @@ elif st.session_state.page_selection == "machine_learning":
     Upon running . `feature_importances` in the `Random Forest Classifier Model` to check how each Salary Category's features influence the training of our model, it is clear that Salary_USD holds the most influence in our model's decisions having 0.2253 or 22% importance. This is followed by Location_encoded, and Skills_encoded which is closely behind of Salary_USD having 0.1388 or 13% importance followed closely by Skills_encoded with 0.14 or 14%.
     """)
 
-
-    st.subheader(f"Number of Trees: {len(clf_automation.estimators_)}")
     st.code("""
         print(f"Number of trees made: {len(clf_automation.estimators_)}")
         """)
-
-    st.markdown("**Number of trees made:** 100")
+    st.subheader(f"Number of Trees: {len(clf_automation.estimators_)}")
     
     st.subheader("Plotting the Forest")
     
+    # Show all trees made
+
+    # Set up the dimensions for the plot grid (e.g., 10x10 grid for 100 trees)
+    n_estimators = 100
+    n_rows = 10
+    n_cols = 10
+
+    # Create a figure large enough to hold the grid of subplots
+    fig, axes = plt.subplots(n_rows, n_cols, figsize=(20, 20), dpi=50)
+
+    # Loop through each estimator and plot it
+    X1_train = st.session_state['X1_train']
     
+    for i, tree in enumerate(clf_automation.estimators_[:n_estimators]):
+        row = i // n_cols
+        col = i % n_cols
+        ax = axes[row, col]
+        plot_tree(tree, feature_names=X1_train.columns, filled=True, rounded=True, ax=ax)
+        ax.set_title(f"Tree {i+1}", fontsize=6)
+        ax.axis('off')  # Turn off axis to reduce clutter
+
+    plt.tight_layout()
+    plt.show()
     
     st.markdown("---")
 
