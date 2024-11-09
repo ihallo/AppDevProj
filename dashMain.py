@@ -1301,7 +1301,7 @@ elif st.session_state.page_selection == "prediction":
         # Button to detect the Salary Category
         if st.button('Detect Salary Category', key='dt_salaryCategory'):
             # Prepare the input data for prediction
-            dt_input_data = [[job_encoded_value, industry_encoded_value, location_encoded_value,  skills_encoded_value]] 
+            dt_input_data = [[job_encoded_value, industry_encoded_value, size_encoded_value, location_encoded_value, AiAdoption_encoded_value, skills_encoded_value, remote_encoded_value, automationRisk_encoded_value, growth_encoded_value]] 
             
             # Predict the Iris species
             dt_prediction = clf_salary.predict(dt_input_data)
