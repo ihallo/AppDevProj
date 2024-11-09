@@ -1215,7 +1215,7 @@ elif st.session_state.page_selection == "machine_learning":
     
     """)
     
-    rfc_feature_importance_df = st.session_state['importance_df_Growth']
+    rfc_feature_importance_df = st.session_state['importance_df_Salary2nd']
 
     st.dataframe(rfc_feature_importance_df, use_container_width=True, hide_index=True)
     
