@@ -870,7 +870,7 @@ elif st.session_state.page_selection == "data_cleaning":
         'Importance_Salary': clf_salary2nd.feature_importances_
     })
 
-    st.session_state['importance_df_Salary'] = importance_df_Salary.sort_values(by='Importance_Salary', ascending=False).reset_index(drop=True)
+    st.session_state['importance_df_Salary2nd'] = importance_df_Salary.sort_values(by='Importance_Salary2nd', ascending=False).reset_index(drop=True)
 
     # Machine Learning Page
 elif st.session_state.page_selection == "machine_learning":
@@ -1187,6 +1187,113 @@ elif st.session_state.page_selection == "machine_learning":
     st.info("""
     Upon running . `feature_importances` in the `Random Forest Classifier Model` to check how each Automation_Risk's features influence the training of our model, it is clear that Salary_USD holds the most influence in our model's decisions having 0.2253 or 22% importance. This is followed by Location_encoded, and Skills_encoded which is closely behind of Salary_USD having 0.1388 or 13% importance followed closely by Skills_encoded with 0.14 or 14%.
     """)
+
+st.subheader("Training the 2nd Random Forest Classifier model for Salary Category")
+    
+    st.code("""
+    * clf_salary2nd = joblib.load('models/RFC_salary2nd.joblib')
+    * clf_salary2nd.fit(X5_train, Y5_train)
+    """)
+    
+    st.subheader("Model Evaluation")
+    
+    st.code("""
+
+    train_accuracy = clf_salary2nd.score(X5_train, Y5_train) #train daTa
+    test_accuracy = clf_salary2nd.score(X5_test, Y5_test) #test daTa
+
+    print(f'Train Accuracy: {train_accuracy * 100:.2f}%')
+    print(f'Test Accuracy: {test_accuracy * 100:.2f}%')
+            
+    """)
+    st.write("""
+
+    **Train Accuracy:** 99.17%\n
+    **Test Accuracy:** 61.54%      
+             
+    """)
+    
+    st.subheader("Feature Importance")
+    
+    st.code("""
+
+    feature_importance = clf_salary2nd.feature_importances_
+    st.session_state['importance_df_Salary2nd'] = importance_df_Salary2nd.sort_values(by='Importance_Salary2nd', ascending=False).reset_index(drop=True)
+    
+    """)
+    
+    rfc_feature_importance_df = st.session_state['importance_df_Growth']
+
+    st.dataframe(rfc_feature_importance_df, use_container_width=True, hide_index=True)
+    
+    def feature_importance_plot4(feature_importance_df, width=500, height=500, key='default'):
+    # Generate a bar plot for feature importances
+        feature_importance_fig = px.bar(
+            feature_importance_df,
+            x='Importance',
+            y='Feature',
+            labels={'Importance': 'Importance Score', 'Feature': 'Feature'},
+            orientation='h'  # Horizontal bar plot
+        )
+
+        # Adjust the height and width
+        feature_importance_fig.update_layout(
+            width=width,  # Set the width
+            height=height  # Set the height
+        )
+
+        # Display the plot in Streamlit
+        st.plotly_chart(feature_importance_fig, use_container_width=True, key=f"feature_importance_plot4_{key}")
+
+    # Example DataFrame to illustrate (replace this with your actual importance DataFrame)
+    rfc_feature_importance_df = pd.DataFrame({
+        'Feature': [
+        'Salary_USD',
+        'Skills_encoded',
+        'Industry_encoded',
+        'Job_encoded',
+        'Location_encoded',
+        'AI_Adoption_encoded',
+        'Automation_encoded',
+        'Size_encoded',
+        'Remote_encoded'
+    ],
+    'Importance': [
+        0.22528175689171243,  # Salary_USD
+        0.13880741712136976,  # Skills_encoded
+        0.1364568017263118,   # Industry_encoded
+        0.13600111833404468,  # Job_encoded
+        0.1322094777615761,   # Location_encoded
+        0.06566605173639027,  # AI_Adoption_encoded
+        0.06424098181751703,  # Automation_encoded
+        0.0613686496097606,   # Size_encoded
+        0.03996774500131726    # Remote_encoded
+    ]
+    })
+
+    # Call the function with appropriate arguments
+    feature_importance_plot4(rfc_feature_importance_df, width=500, height=500, key='2')
+    
+    st.info("""
+    Upon running . `feature_importances` in the `Random Forest Classifier Model` to check how each Salary Category's features influence the training of our model, it is clear that Salary_USD holds the most influence in our model's decisions having 0.2253 or 22% importance. This is followed by Location_encoded, and Skills_encoded which is closely behind of Salary_USD having 0.1388 or 13% importance followed closely by Skills_encoded with 0.14 or 14%.
+    """)
+    
+    print(f"Number of trees made: {len(clf_automation.estimators_)}")
+
+    st.subheader("Number of Trees")
+    st.code("""
+
+    print(f"Number of trees made: {len(clf_automation.estimators_)}")
+     
+    """)
+
+    st.markdown("**Number of trees made:** 100")
+    
+    st.subheader("Plotting the Forest")
+    
+    
+    
+    st.markdown("---")
 
 
 # Prediction Page
