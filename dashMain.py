@@ -731,8 +731,116 @@ elif st.session_state.page_selection == "data_cleaning":
     })
 
     st.session_state['importance_df_Salary'] = importance_df_Salary.sort_values(by='Importance_Salary', ascending=False).reset_index(drop=True)
+
+    new_df = dataset
+
+    st.write(new_df.head())
+
+    salaryCategory_counts = new_df['Salary_Category'].value_counts()
+    st.write(salaryCategory_counts)
+
+    # Assuming your DataFrame is named 'weather_df_new'
+    selected_salaryCategory = ["Mid Level", "Senior Level"]
+
+    # Filter the DataFrame to keep only the desired summaries
+    new_df_filtered = new_df[new_df['Salary_Category'].isin(selected_salaryCategory)]
+
+    # Reset the index if needed
+    new_df_filtered = new_df_filtered.reset_index(drop=True)
+
+    st.write(new_df_filtered.head())
+
+    salaryCategory_counts = new_df_filtered['Salary_Category'].value_counts()
+    st.write(salaryCategory_counts)
+
+    # Initialize an empty dataframe to store balanced data
+    balanced_new_df = pd.DataFrame()
+
+    # Loop through each category and sample 6547 rows (for Overcast, we'll use all rows)
+for Salary_Category_Projection in salaryCategory_counts.index:
+    if Salary_Category_Projection == 'Entry Level':
+        sampled_df = new_df_filtered[new_df_filtered['Salary_Category'] == Salary_Category_Projection]
+    else:
+        sampled_df = new_df_filtered[new_df_filtered['Salary_Category'] == Salary_Category_Projection].sample(172, random_state=42)
+
+    # Append the sampled data to the balanced dataframe
+    balanced_new_df = pd.concat([balanced_new_df, sampled_df])
+
+    Reset index if necessary
+    balanced_new_df.reset_index(drop=True, inplace=True)
+
+    # Now, 'balanced_weather_df' contains the balanced rows
+    st.write(balanced_new_df['Salary_Category'].value_counts())
+
+    st.code( """ balanced_new_df['Salary_encoded'] = growth_encoder.fit_transform(balanced_new_df['Salary_Category']) """)
+    balanced_new_df['Salary_encoded'] = growth_encoder.fit_transform(balanced_new_df['Salary_Category'])
+    st.write(balanced_new_df.head())
     
+    st.write(balanced_new_df['Salary_Category'].unique())
+
+    st.write(balanced_new_df['Salary_encoded'].unique())
+
+    st.code("""
+    # Mapping of the Summary and their encoded equivalent
+    balanced_unique_salaryCategory = balanced_new_df['Salary_Category'].unique()
+    balanced_unique_salaryCategory_encoded = balanced_new_df['Salary_encoded'].unique()
     
+    # Create a new DataFrame
+    balanced_salaryCategory_mapping_df = pd.DataFrame({'Summary': balanced_unique_salaryCategory, 'Summary_Encoded': balanced_unique_salaryCategory_encoded})
+    """)
+
+    balanced_unique_salaryCategory = balanced_new_df['Salary_Category'].unique()
+    balanced_unique_salaryCategory_encoded = balanced_new_df['Salary_encoded'].unique()
+
+    balanced_salaryCategory_mapping_df = pd.DataFrame({'Summary': balanced_unique_salaryCategory, 'Summary_Encoded': balanced_unique_salaryCategory_encoded})
+    # Display the DataFrame
+    st.write(balanced_salaryCategory_mapping_df)
+
+    balanced_new_df['Job_encoded'] = job_encoder.fit_transform(balanced_new_df['Job_Title'])
+    balanced_new_df['Industry_encoded'] = industry_encoder.fit_transform(balanced_new_df['Industry'])
+    balanced_new_df['Location_encoded'] = location_encoder.fit_transform(balanced_new_df['Location'])
+    balanced_new_df['Skills_encoded'] = skills_encoder.fit_transform(balanced_new_df['Required_Skills'])
+
+    # Select features and target variable
+    features = ['Job_encoded', 'Industry_encoded', 'Location_encoded', 'Skills_encoded']
+    X5 = balanced_new_df[features]
+    Y5 = balanced_new_df['Salary_encoded']
+
+    st.code("""features = ['Job_encoded', 'Industry_encoded', 'Location_encoded', 'Skills_encoded']
+    X5 = df_data[features]
+    Y5 = df_data['Salary_encoded']""")
+    
+    X5_train, X5_test, Y5_train, Y5_test = train_test_split(X5, Y5, test_size=0.3, random_state=42)
+    st.code("""X5_train, X5_test, Y5_train, Y5_test = train_test_split(X5, Y5, test_size=0.3, random_state=42)""")
+
+    st.write('Training Features (X5_train):')
+    st.dataframe(X5_train)
+
+    st.write('Testing Features (X5_test):')
+    st.dataframe(X5_test)
+
+    st.write('Training Target Variable (Y5_train):')
+    st.dataframe(Y5_train)
+
+    st.write('Testing Target Variable (Y5_test):')
+    st.dataframe(Y5_test)
+    
+    clf_salary.fit(X5_train, Y5_train)
+    
+    y_pred = clf_salary.predict(X5_test)
+    
+    train_accuracy = clf_salary.score(X5_train, Y5_train) #train daTa
+    test_accuracy = clf_salary.score(X5_test, Y5_test) #test daTa
+    st.write(train_accuracy)
+    st.write(test_accuracy)
+    
+    importance_df_Salary = pd.DataFrame({
+        'Feature': X5.columns,
+        'Importance_Salary': clf_salary.feature_importances_
+    })
+
+    st.session_state['importance_df_Salary'] = importance_df_Salary.sort_values(by='Importance_Salary', ascending=False).reset_index(drop=True)
+
 # Machine Learning Page
 elif st.session_state.page_selection == "machine_learning":
     st.header("🤖 Machine Learning")
