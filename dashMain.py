@@ -1297,7 +1297,7 @@ elif st.session_state.page_selection == "prediction":
             
         #Salary Category Detection
 
-        salary_classes_list = ['Entry Level', 'Mid Level', 'Senior Level']
+        salary_classes_list = [ 'Mid Level', 'Senior Level']
         
         # Button to detect the Salary Category
         if st.button('Detect Salary Category', key='dt_salaryCategory'):
