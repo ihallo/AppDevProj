@@ -861,7 +861,9 @@ elif st.session_state.page_selection == "data_cleaning":
     st.write(f'Test Accuracy: {test_accuracy * 100:.2f}%')
     st.info("""Displayed the training (99.17%) and test accuracy (61.54%) to assess model performance.""")
     st.header("💡 Insights")
-    st.info("""The initial test accuracy for the Salary Category is 58% but by removing the Entry Level due to its low count, we managed to improve the accuracy to 61.54%.""")
+    st.info("""
+    - The initial test accuracy for the Salary Category is 58% but by removing the Entry Level due to its low count, we managed to improve the accuracy to 61.54%.
+    - The accuracy could be further improved with more data.""")
     
     importance_df_Salary = pd.DataFrame({
         'Feature': X5.columns,
