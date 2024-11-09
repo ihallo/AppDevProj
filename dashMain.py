@@ -831,8 +831,8 @@ elif st.session_state.page_selection == "data_cleaning":
     
     train_accuracy = clf_salary.score(X5_train, Y5_train) #train daTa
     test_accuracy = clf_salary.score(X5_test, Y5_test) #test daTa
-    st.write(train_accuracy)
-    st.write(test_accuracy)
+    st.write(f'Train Accuracy: {train_accuracy * 100:.2f}%')
+    st.write(f'Test Accuracy: {test_accuracy * 100:.2f}%')
     
     importance_df_Salary = pd.DataFrame({
         'Feature': X5.columns,
