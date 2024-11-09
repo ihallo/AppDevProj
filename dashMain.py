@@ -865,7 +865,7 @@ elif st.session_state.page_selection == "data_cleaning":
     - The initial test accuracy for the Salary Category is 58% but by removing the Entry Level due to its low count, we managed to improve the accuracy to 61.54%.
     - The accuracy could be further improved with more data.""")
     
-    importance_df_Salary = pd.DataFrame({
+    importance_df_Salary2nd = pd.DataFrame({
         'Feature': X5.columns,
         'Importance_Salary': clf_salary2nd.feature_importances_
     })
