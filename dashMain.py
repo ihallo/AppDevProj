@@ -633,8 +633,6 @@ elif st.session_state.page_selection == "data_cleaning":
     
     train_accuracy = clf_automation.score(X1_train, Y1_train) #train daTa
     test_accuracy = clf_automation.score(X1_test, Y1_test) #test daTa
-    st.write(f'Train Accuracy: {train_accuracy * 100:.2f}%')
-    st.write(f'Test Accuracy: {test_accuracy * 100:.2f}%')
     
     importance_df = pd.DataFrame({
         'Feature': X1.columns,
@@ -685,8 +683,6 @@ elif st.session_state.page_selection == "data_cleaning":
     
     train_accuracy = clf_growthPrediction.score(X2_train, Y2_train) #train daTa
     test_accuracy = clf_growthPrediction.score(X2_test, Y2_test) #test daTa
-    st.write(f'Train Accuracy: {train_accuracy * 100:.2f}%')
-    st.write(f'Test Accuracy: {test_accuracy * 100:.2f}%')
     
     importance_df_Growth = pd.DataFrame({
         'Feature': X2.columns,
@@ -728,8 +724,6 @@ elif st.session_state.page_selection == "data_cleaning":
     
     train_accuracy = clf_salary.score(X4_train, Y4_train) #train daTa
     test_accuracy = clf_salary.score(X4_test, Y4_test) #test daTa
-    st.write(f'Train Accuracy: {train_accuracy * 100:.2f}%')
-    st.write(f'Test Accuracy: {test_accuracy * 100:.2f}%')
     
     importance_df_Salary = pd.DataFrame({
         'Feature': X4.columns,
@@ -857,8 +851,7 @@ elif st.session_state.page_selection == "data_cleaning":
     
     train_accuracy = clf_salary2nd.score(X5_train, Y5_train) #train daTa
     test_accuracy = clf_salary2nd.score(X5_test, Y5_test) #test daTa
-    st.write(f'Train Accuracy: {train_accuracy * 100:.2f}%')
-    st.write(f'Test Accuracy: {test_accuracy * 100:.2f}%')
+  
     st.info("""Displayed the training (99.17%) and test accuracy (61.54%) to assess model performance.""")
     st.header("💡 Insights")
     st.info("""
