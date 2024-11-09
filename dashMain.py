@@ -78,6 +78,7 @@ dataset = pd.read_csv("data/AI.csv")
 clf_automation = joblib.load('models/RFC_Automation.joblib')
 clf_growthPrediction = joblib.load('models/RFC_GrowthPrediction.joblib')
 clf_salary = joblib.load('models/RFC_Salary.joblib')
+clf_salary2nd = joblib.load('models/RFC_Salary2nd.joblib')
 
 # Modifications
 
@@ -825,18 +826,18 @@ elif st.session_state.page_selection == "data_cleaning":
     st.write('Testing Target Variable (Y5_test):')
     st.dataframe(Y5_test)
     
-    clf_salary.fit(X5_train, Y5_train)
+    clf_salary2nd.fit(X5_train, Y5_train)
     
-    y_pred = clf_salary.predict(X5_test)
+    y_pred = clf_salary2nd.predict(X5_test)
     
-    train_accuracy = clf_salary.score(X5_train, Y5_train) #train daTa
-    test_accuracy = clf_salary.score(X5_test, Y5_test) #test daTa
+    train_accuracy = clf_salary2nd.score(X5_train, Y5_train) #train daTa
+    test_accuracy = clf_salary2nd.score(X5_test, Y5_test) #test daTa
     st.write(f'Train Accuracy: {train_accuracy * 100:.2f}%')
     st.write(f'Test Accuracy: {test_accuracy * 100:.2f}%')
     
     importance_df_Salary = pd.DataFrame({
         'Feature': X5.columns,
-        'Importance_Salary': clf_salary.feature_importances_
+        'Importance_Salary': clf_salary2nd.feature_importances_
     })
 
     st.session_state['importance_df_Salary'] = importance_df_Salary.sort_values(by='Importance_Salary', ascending=False).reset_index(drop=True)
@@ -1301,10 +1302,10 @@ elif st.session_state.page_selection == "prediction":
         # Button to detect the Salary Category
         if st.button('Detect Salary Category', key='dt_salaryCategory'):
             # Prepare the input data for prediction
-            dt_input_data = [[job_encoded_value, industry_encoded_value, size_encoded_value, location_encoded_value, AiAdoption_encoded_value, skills_encoded_value, remote_encoded_value, automationRisk_encoded_value, growth_encoded_value]] 
+            dt_input_data = [[job_encoded_value, industry_encoded_value, location_encoded_value, skills_encoded_value]] 
             
             # Predict the Iris species
-            dt_prediction = clf_salary.predict(dt_input_data)
+            dt_prediction = clf_salary2nd.predict(dt_input_data)
             
             # Display the prediction result
             st.markdown(f'The predicted Salary Category is: `{salary_classes_list[dt_prediction[0]]}`')
