@@ -1130,7 +1130,7 @@ elif st.session_state.page_selection == "machine_learning":
     feature_importance_plot2(rfc_feature_importance_df, width=500, height=500, key='2')
     
     st.info("""
-    Upon running . `feature_importances` in the `Random Forest Classifier Model` to check how each Salary Category's features influence the training of our model, it is clear that Salary_USD holds the most influence in our model's decisions having 0.2253 or 22% importance. This is followed by Location_encoded, and Skills_encoded which is closely behind of Salary_USD having 0.1388 or 13% importance followed closely by Skills_encoded with 0.14 or 14%.
+    Upon running . `feature_importances` in the `Random Forest Classifier Model` to check how each Job Growth Projection's features influence the training of our model, it is clear that Salary_USD holds the most influence in our model's decisions having 0.2253 or 22% importance. This is followed by Location_encoded, and Skills_encoded which is closely behind of Salary_USD having 0.1388 or 13% importance followed closely by Skills_encoded with 0.14 or 14%.
     """)
     
     st.subheader(f"Number of Trees: {len(clf_growthPrediction.estimators_)}")
@@ -1277,8 +1277,63 @@ elif st.session_state.page_selection == "machine_learning":
     feature_importance_plot3(rfc_feature_importance_df, width=500, height=500, key='2')
     
     st.info("""
-    Upon running . `feature_importances` in the `Random Forest Classifier Model` to check how each Automation_Risk's features influence the training of our model, it is clear that Salary_USD holds the most influence in our model's decisions having 0.2253 or 22% importance. This is followed by Location_encoded, and Skills_encoded which is closely behind of Salary_USD having 0.1388 or 13% importance followed closely by Skills_encoded with 0.14 or 14%.
+    Upon running . `feature_importances` in the `Random Forest Classifier Model` to check how each Salary Category's features influence the training of our model, it is clear that Salary_USD holds the most influence in our model's decisions having 0.2253 or 22% importance. This is followed by Location_encoded, and Skills_encoded which is closely behind of Salary_USD having 0.1388 or 13% importance followed closely by Skills_encoded with 0.14 or 14%.
     """)
+    
+    st.subheader(f"Number of Trees: {len(clf_salary.estimators_)}")
+    st.code("""
+
+    print(f"Number of trees made: {len(clf_salary.estimators_)}")
+     
+    """)
+    
+    st.subheader("Plotting the Forest")
+    
+    st.code("""
+    
+    # Show all trees made
+
+    # Set up the dimensions for the plot grid (e.g., 10x10 grid for 100 trees)
+    n_estimators = 100
+    n_rows = 10
+    n_cols = 10
+
+    # Create a figure large enough to hold the grid of subplots
+    fig, axes = plt.subplots(n_rows, n_cols, figsize=(20, 20), dpi=50)
+
+    # Loop through each estimator and plot it
+    X4_train = st.session_state['X4_train']
+    
+    for i, tree in enumerate(clf_salary.estimators_[:n_estimators]):
+        row = i // n_cols
+        col = i % n_cols
+        ax = axes[row, col]
+        plot_tree(tree, feature_names=X4_train.columns, filled=True, rounded=True, ax=ax)
+        ax.set_title(f"Tree {i+1}", fontsize=6)
+        ax.axis('off')  # Turn off axis to reduce clutter
+
+    plt.tight_layout()
+    st.pyplot(plt) """)
+    
+    dt_automation_image = Image.open('assets/salaryTree.png')
+    st.image(dt_automation_image, caption='Random Forest classifier - Salary Category - Tree Plot')
+    
+    st.info("This graph shows **all of the decision trees** made by our **Random Forest Classifier** model for the Salary Category which then forms a **Forest**.")
+    
+    st.subheader("Single Tree")
+    st.code("""
+            # Extract a single tree from the Random Forest
+            single_tree = clf_salary.estimators_[0]
+
+            # Plot the tree
+            plt.figure(figsize=(20, 10))
+            plot_tree(single_tree, feature_names=X4_train.columns, filled=True, rounded=True)
+            plt.show()
+            """)
+    
+    dt_automation_image = Image.open('assets/salarySingleTree.png')
+    st.image(dt_automation_image, caption='Random Forest classifier - Salary Category - Single Tree Plot')
+    st.info("This graph shows **a single tree ** made by our **Random Forest Classifier** model.")
 
     st.subheader("Training the 2nd Random Forest Classifier model for Salary Category")
     
