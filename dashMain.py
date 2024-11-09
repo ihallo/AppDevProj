@@ -1113,7 +1113,7 @@ elif st.session_state.page_selection == "machine_learning":
         ax.axis('off')  # Turn off axis to reduce clutter
 
     plt.tight_layout()
-    plt.show()
+    st.pyplot(plt)
     
     st.markdown("---")
     
