@@ -748,14 +748,15 @@ elif st.session_state.page_selection == "data_cleaning":
 
     salaryCategory_counts = new_df['Salary_Category'].value_counts()
     st.write(salaryCategory_counts)
-    st.info("The count of each salary category is displayed, providing an overview of the dataset distribution by salary level.")
+    st.info(""" 
+    - The count of each salary category is displayed, providing an overview of the dataset distribution by salary level.
+    - Seeing as the 'Entry Level' only contains 18 counts, we would then include only the 'Mid Level' and 'Senior Level' salary categories.""")
 
     # Assuming your DataFrame is named 'weather_df_new'
     selected_salaryCategory = ["Mid Level", "Senior Level"]
 
     # Filter the DataFrame to keep only the desired summaries
     new_df_filtered = new_df[new_df['Salary_Category'].isin(selected_salaryCategory)]
-    st.info("Filtered the dataset to include only 'Mid Level' and 'Senior Level' salary categories.")
 
     # Reset the index if needed
     new_df_filtered = new_df_filtered.reset_index(drop=True)
@@ -782,10 +783,11 @@ elif st.session_state.page_selection == "data_cleaning":
 
     # Reset index if necessary
     balanced_new_df.reset_index(drop=True, inplace=True)
-    st.info("Balanced the dataset by sampling each salary category equally and reset the index for better organization.")
 
     # Now, 'balanced_weather_df' contains the balanced rows
+    st.code( """ balanced_new_df['Salary_Category'].value_counts() """)
     st.write(balanced_new_df['Salary_Category'].value_counts())
+    st.info("Balanced the dataset by sampling each salary category equally and reset the index for better organization.")
 
     st.code( """ balanced_new_df['Salary_encoded'] = growth_encoder.fit_transform(balanced_new_df['Salary_Category']) """)
     balanced_new_df['Salary_encoded'] = growth_encoder.fit_transform(balanced_new_df['Salary_Category'])
