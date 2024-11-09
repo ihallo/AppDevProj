@@ -1,7 +1,9 @@
-Group 9 Members:
-Turgo, Andrei Bernard
-Torres, Alistair Aaron
-Dantes, Nikkos Adrielle
+# Group 9 Members:
+1. Turgo, Andrei Bernard
+2. Torres, Alistair Aaron
+3. Dantes, Nikkos Adrielle
+4. Solis, Jaymar
+5. Borrinaga, Don Carlo
 
 
 # Automation Risk, Job Growth Projection, Salary Category Dashboard using Streamlit
