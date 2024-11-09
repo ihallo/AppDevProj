@@ -740,9 +740,9 @@ elif st.session_state.page_selection == "data_cleaning":
 
     st.code("""new_df = dataset""")
     new_df = dataset
-    st.info("Creating a copy of the original dataset for further processing.")
 
     st.write(new_df.head())
+    st.info("Creating a copy of the original dataset for further processing.")
 
     salaryCategory_counts = new_df['Salary_Category'].value_counts()
     st.write(salaryCategory_counts)
