@@ -1265,12 +1265,7 @@ elif st.session_state.page_selection == "machine_learning":
     })
 
     # Call the function with appropriate arguments
-    
-    if feature_importance_plot4 is not None:
-        feature_importance_plot4(rfc_feature_importance_df, width=500, height=500, key='2')
-    else:
-        print(" ")
-    
+    feature_importance_plot4(rfc_feature_importance_df, width=500, height=500, key='2')
     
     st.info("""
     Upon running . `feature_importances` in the `Random Forest Classifier Model` to check how each Salary Category's features influence the training of our model, it is clear that Salary_USD holds the most influence in our model's decisions having 0.2253 or 22% importance. This is followed by Location_encoded, and Skills_encoded which is closely behind of Salary_USD having 0.1388 or 13% importance followed closely by Skills_encoded with 0.14 or 14%.
