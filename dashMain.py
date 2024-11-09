@@ -1298,30 +1298,6 @@ elif st.session_state.page_selection == "machine_learning":
     
     st.subheader("Plotting the Forest")
     
-    # Show all trees made
-
-    # Set up the dimensions for the plot grid (e.g., 10x10 grid for 100 trees)
-    n_estimators = 100
-    n_rows = 10
-    n_cols = 10
-
-    # Create a figure large enough to hold the grid of subplots
-    fig, axes = plt.subplots(n_rows, n_cols, figsize=(20, 20), dpi=50)
-
-    # Loop through each estimator and plot it
-    X1_train = st.session_state['X1_train']
-    
-    for i, tree in enumerate(clf_automation.estimators_[:n_estimators]):
-        row = i // n_cols
-        col = i % n_cols
-        ax = axes[row, col]
-        plot_tree(tree, feature_names=X1_train.columns, filled=True, rounded=True, ax=ax)
-        ax.set_title(f"Tree {i+1}", fontsize=6)
-        ax.axis('off')  # Turn off axis to reduce clutter
-
-    plt.tight_layout()
-    plt.show()
-    
     st.markdown("---")
 
 # Prediction Page
