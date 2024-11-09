@@ -738,7 +738,9 @@ elif st.session_state.page_selection == "data_cleaning":
 
     st.session_state['importance_df_Salary'] = importance_df_Salary.sort_values(by='Importance_Salary', ascending=False).reset_index(drop=True)
 
+    st.code("""new_df = dataset""")
     new_df = dataset
+    st.info("Creating a copy of the original dataset for further processing.")
 
     st.write(new_df.head())
 
