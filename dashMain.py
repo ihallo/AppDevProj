@@ -757,11 +757,11 @@ elif st.session_state.page_selection == "data_cleaning":
     balanced_new_df = pd.DataFrame()
 
     # Loop through each category and sample 6547 rows (for Overcast, we'll use all rows)
-for Salary_Category_Projection in salaryCategory_counts.index:
-    if Salary_Category_Projection == 'Entry Level':
-        sampled_df = new_df_filtered[new_df_filtered['Salary_Category'] == Salary_Category_Projection]
-    else:
-        sampled_df = new_df_filtered[new_df_filtered['Salary_Category'] == Salary_Category_Projection].sample(172, random_state=42)
+    for Salary_Category_Projection in salaryCategory_counts.index:
+        if Salary_Category_Projection == 'Entry Level':
+            sampled_df = new_df_filtered[new_df_filtered['Salary_Category'] == Salary_Category_Projection]
+        else:
+            sampled_df = new_df_filtered[new_df_filtered['Salary_Category'] == Salary_Category_Projection].sample(172, random_state=42)
 
     # Append the sampled data to the balanced dataframe
     balanced_new_df = pd.concat([balanced_new_df, sampled_df])
@@ -843,6 +843,7 @@ for Salary_Category_Projection in salaryCategory_counts.index:
 
     # Machine Learning Page
 elif st.session_state.page_selection == "machine_learning":
+    
     st.header("🤖 Machine Learning")
 
     # Your content for the MACHINE LEARNING page goes here
