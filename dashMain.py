@@ -870,7 +870,7 @@ elif st.session_state.page_selection == "data_cleaning":
         'Importance_Salary': clf_salary2nd.feature_importances_
     })
 
-    st.session_state['importance_df_Salary2nd'] = importance_df_Salary.sort_values(by='Importance_Salary2nd', ascending=False).reset_index(drop=True)
+    st.session_state['importance_df_Salary2nd'] = importance_df_Salary2nd.sort_values(by='Importance_Salary2nd', ascending=False).reset_index(drop=True)
 
     # Machine Learning Page
 elif st.session_state.page_selection == "machine_learning":
