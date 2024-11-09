@@ -1,7 +1,12 @@
+Group 9 Members:
+Turgo, Andrei Bernard
+Torres, Alistair Aaron
+Dantes, Nikkos Adrielle
+
 
 # Automation Risk, Job Growth Projection, Salary Category Dashboard using Streamlit
 
-This is a Streamlit web application that performs Exploratory Data Analysis (EDA), Data Preprocessing, and Supervised Machine Learning in order for this to work the machine utilizes Decision Tree Classifier and Random Forest Classifier to classify classify the Automation Risk, Job Growth Projection, Salary Category.
+A Streamlit web application that performs Exploratory Data Analysis (EDA), Data Preprocessing, and Supervised Machine Learning to classify Salary_USD, Automation_Risk, and Job_Growth_Projection from the AI-Powered Job Market Insights dataset using Random Forest Classifier.
 
 ![Main Page Screenshot](screenshots/IrisClassificationDashboard.webp)
 
