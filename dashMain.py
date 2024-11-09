@@ -246,7 +246,7 @@ elif st.session_state.page_selection == "eda":
     # Display the legend in an expander above the columns
     with st.expander('Legend', expanded=True):
         st.write('''
-            - **Data**: [AI-Powered Job Market Insights Dataset](https://www.kaggle.com/datasets/arshid/iris-flower-dataset).
+            - **Data**: [AI-Powered Job Market Insights Dataset](https://www.kaggle.com/datasets/uom190346a/ai-powered-job-market-insights?fbclid=IwZXh0bgNhZW0CMTEAAR1Un4XKwOuQJwrrf3URa1_izEZDgxCqn7Xy8HCJASGhkOS5tUUrGG2BcSM_aem_TiYvlOVatXZWnYpMmYcdVA).
             - :green[Pie Chart]: Distribution of the Automation_Risk in the dataset.
             - :green[Bar Chart]: Distribution of the Job_Growth_Projection in the dataset.
             - :green[Line Chart]: Distribution of the Salary_Category in the dataset.
@@ -633,6 +633,8 @@ elif st.session_state.page_selection == "data_cleaning":
     
     train_accuracy = clf_automation.score(X1_train, Y1_train) #train daTa
     test_accuracy = clf_automation.score(X1_test, Y1_test) #test daTa
+    st.write(f'Train Accuracy: {train_accuracy * 100:.2f}%')
+    st.write(f'Test Accuracy: {test_accuracy * 100:.2f}%')
     
     importance_df = pd.DataFrame({
         'Feature': X1.columns,
@@ -683,6 +685,8 @@ elif st.session_state.page_selection == "data_cleaning":
     
     train_accuracy = clf_growthPrediction.score(X2_train, Y2_train) #train daTa
     test_accuracy = clf_growthPrediction.score(X2_test, Y2_test) #test daTa
+    st.write(f'Train Accuracy: {train_accuracy * 100:.2f}%')
+    st.write(f'Test Accuracy: {test_accuracy * 100:.2f}%')
     
     importance_df_Growth = pd.DataFrame({
         'Feature': X2.columns,
@@ -724,7 +728,8 @@ elif st.session_state.page_selection == "data_cleaning":
     
     train_accuracy = clf_salary.score(X4_train, Y4_train) #train daTa
     test_accuracy = clf_salary.score(X4_test, Y4_test) #test daTa
-    
+    st.write(f'Train Accuracy: {train_accuracy * 100:.2f}%')
+    st.write(f'Test Accuracy: {test_accuracy * 100:.2f}%')
     
     importance_df_Salary = pd.DataFrame({
         'Feature': X4.columns,
@@ -1274,7 +1279,7 @@ elif st.session_state.page_selection == "prediction":
             # Prepare the input data for prediction
             dt_input_data = [[job_encoded_value, industry_encoded_value, size_encoded_value, location_encoded_value, AiAdoption_encoded_value, skills_encoded_value, remote_encoded_value, dt_SalaryUSD, growth_encoded_value]] 
             
-            # Predict the Iris species
+            # Predict the Automation
             dt_prediction = clf_automation.predict(dt_input_data)
             
             # Display the prediction result
@@ -1289,7 +1294,7 @@ elif st.session_state.page_selection == "prediction":
             # Prepare the input data for prediction
             dt_input_data = [[job_encoded_value, industry_encoded_value, size_encoded_value, location_encoded_value, AiAdoption_encoded_value, skills_encoded_value, remote_encoded_value, dt_SalaryUSD, automationRisk_encoded_value]] 
             
-            # Predict the Iris species
+            # Predict the Growth
             dt_prediction = clf_growthPrediction.predict(dt_input_data)
             
             # Display the prediction result
@@ -1304,7 +1309,7 @@ elif st.session_state.page_selection == "prediction":
             # Prepare the input data for prediction
             dt_input_data = [[job_encoded_value, industry_encoded_value, location_encoded_value, skills_encoded_value]] 
             
-            # Predict the Iris species
+            # Predict the Salary
             dt_prediction = clf_salary2nd.predict(dt_input_data)
             
             # Display the prediction result
