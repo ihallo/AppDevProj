@@ -1294,7 +1294,7 @@ elif st.session_state.page_selection == "machine_learning":
     st.code("""
         print(f"Number of trees made: {len(clf_automation.estimators_)}")
         """)
-    st.subheader(f"Number of Trees: {len(clf_automation.estimators_)}")
+    st.subheader(f"#### Number of Trees: {len(clf_automation.estimators_)}")
     
     st.subheader("Plotting the Forest")
     
