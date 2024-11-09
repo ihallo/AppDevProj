@@ -765,7 +765,7 @@ elif st.session_state.page_selection == "data_cleaning":
             sampled_df = new_df_filtered[new_df_filtered['Salary_Category'] == Salary_Category_Projection].sample(172, random_state=42)
 
     # Append the sampled data to the balanced dataframe
-    balanced_new_df = pd.concat([balanced_new_df, sampled_df])
+        balanced_new_df = pd.concat([balanced_new_df, sampled_df])
 
     # Reset index if necessary
     balanced_new_df.reset_index(drop=True, inplace=True)
