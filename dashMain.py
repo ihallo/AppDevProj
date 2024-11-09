@@ -769,7 +769,6 @@ elif st.session_state.page_selection == "data_cleaning":
 
     # Initialize an empty dataframe to store balanced data
     balanced_new_df = pd.DataFrame()
-    st.info("Initialized an empty DataFrame to store a balanced sample of data.")
 
     # Loop through each category and sample 6547 rows (for Overcast, we'll use all rows)
     for Salary_Category_Projection in salaryCategory_counts.index:
@@ -813,13 +812,14 @@ elif st.session_state.page_selection == "data_cleaning":
     balanced_salaryCategory_mapping_df = pd.DataFrame({'Summary': balanced_unique_salaryCategory, 'Summary_Encoded': balanced_unique_salaryCategory_encoded})
     # Display the DataFrame
     st.write(balanced_salaryCategory_mapping_df)
-    st.info("Mapped each unique salary category to its corresponding encoded value for reference.")
+    st.info("""
+    - Mapped each unique salary category to its corresponding encoded value for reference.
+    - Encoded categorical features into numerical values for compatibility with machine learning models. """)
 
     balanced_new_df['Job_encoded'] = job_encoder.fit_transform(balanced_new_df['Job_Title'])
     balanced_new_df['Industry_encoded'] = industry_encoder.fit_transform(balanced_new_df['Industry'])
     balanced_new_df['Location_encoded'] = location_encoder.fit_transform(balanced_new_df['Location'])
     balanced_new_df['Skills_encoded'] = skills_encoder.fit_transform(balanced_new_df['Required_Skills'])
-    st.info("Encoded categorical features into numerical values for compatibility with machine learning models.")
 
     # Select features and target variable
     features = ['Job_encoded', 'Industry_encoded', 'Location_encoded', 'Skills_encoded']
@@ -846,19 +846,20 @@ elif st.session_state.page_selection == "data_cleaning":
 
     st.write('Testing Target Variable (Y5_test):')
     st.dataframe(Y5_test)
-    st.info("Displayed the training and testing sets for both features and target variables.")
     
     clf_salary2nd.fit(X5_train, Y5_train)
-    st.info("Trained the model on the training data.")
     
     y_pred = clf_salary2nd.predict(X5_test)
-    st.info("Generated predictions on the test data.")
+    st.info("""
+    - Displayed the training and testing sets for both features and target variables.
+    - Trained the model on the training data.
+    - Generated predictions on the test data.""")
     
     train_accuracy = clf_salary2nd.score(X5_train, Y5_train) #train daTa
     test_accuracy = clf_salary2nd.score(X5_test, Y5_test) #test daTa
     st.write(f'Train Accuracy: {train_accuracy * 100:.2f}%')
     st.write(f'Test Accuracy: {test_accuracy * 100:.2f}%')
-    st.info("Displayed the training and testing accuracy to assess model performance.")
+    st.info("""Displayed the training (99.17%) and test accuracy (61.54%) to assess model performance.""")
     
     importance_df_Salary = pd.DataFrame({
         'Feature': X5.columns,
@@ -866,7 +867,6 @@ elif st.session_state.page_selection == "data_cleaning":
     })
 
     st.session_state['importance_df_Salary'] = importance_df_Salary.sort_values(by='Importance_Salary', ascending=False).reset_index(drop=True)
-    st.info("Calculated and displayed the feature importance, sorted by their influence on the model's predictions.")
 
     # Machine Learning Page
 elif st.session_state.page_selection == "machine_learning":
