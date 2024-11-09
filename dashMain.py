@@ -1091,6 +1091,10 @@ elif st.session_state.page_selection == "machine_learning":
     
     st.subheader("Plotting the Forest")
     
+    
+    
+    st.code("""
+    
     # Show all trees made
 
     # Set up the dimensions for the plot grid (e.g., 10x10 grid for 100 trees)
@@ -1113,7 +1117,7 @@ elif st.session_state.page_selection == "machine_learning":
         ax.axis('off')  # Turn off axis to reduce clutter
 
     plt.tight_layout()
-    st.pyplot(plt)
+    st.pyplot(plt) """)
     
     st.markdown("---")
     
