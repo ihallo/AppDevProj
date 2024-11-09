@@ -1028,6 +1028,7 @@ elif st.session_state.page_selection == "machine_learning":
     
     st.info("This graph shows **all of the decision trees** made by our **Random Forest Classifier** model for the Automation Risk which then forms a **Forest**.")
     
+    st.subheader("Single Tree")
     st.code("""
             # Extract a single tree from the Random Forest
             single_tree = clf_automation.estimators_[0]
