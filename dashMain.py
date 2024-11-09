@@ -1466,7 +1466,7 @@ elif st.session_state.page_selection == "machine_learning":
             plt.show()
             """)
     
-    dt_automation_image = Image.open('assets/salary2ndSingleTree.png.png')
+    dt_automation_image = Image.open('assets/salary2ndSingleTree.png')
     st.image(dt_automation_image, caption='Random Forest classifier - Salary Category 2nd Training - Single Tree Plot')
     st.info("This graph shows **a single tree ** made by our **Random Forest Classifier** model.")
     
