@@ -465,7 +465,7 @@ elif st.session_state.page_selection == "data_cleaning":
         column_name = parts[1]
         non_null_count = parts[2]
         dtype = parts[-1]
-        columns_info.append([column_name, non_null_count, dtype])
+        
 
     # Create a DataFrame for a clean table display
     columns_df = pd.DataFrame(columns_info, columns=["Column Name", "Non-Null Count", "Data Type"])
