@@ -938,7 +938,10 @@ elif st.session_state.page_selection == "machine_learning":
     
     """)
     
-    rfc_feature_importance_df = st.session_state['importance_df']
+    if 'importance_df' in st.session_state and st.session_state['importance_df'] is not None:
+        rfc_feature_importance_df = st.session_state['importance_df']
+    else: 
+        rfc_feature_importance_df = ""
 
     st.dataframe(rfc_feature_importance_df, use_container_width=True, hide_index=True)
     
