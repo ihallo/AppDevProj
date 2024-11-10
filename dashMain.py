@@ -1588,7 +1588,7 @@ elif st.session_state.page_selection == "prediction":
         automation_classes_list = ['High', 'Low', 'Medium']
         
         # Button to detect the Automation Risk
-        if st.button('Detect Automation Risk *Accuracy: 43.33%)', key='dt_detectAutomation'):
+        if st.button('Detect Automation Risk (Accuracy: 43.33%)', key='dt_detectAutomation'):
             # Prepare the input data for prediction
             dt_input_data = [[job_encoded_value, industry_encoded_value, size_encoded_value, location_encoded_value, AiAdoption_encoded_value, skills_encoded_value, remote_encoded_value, dt_SalaryUSD, growth_encoded_value]] 
             
