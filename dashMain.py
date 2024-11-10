@@ -19,10 +19,10 @@ from sklearn.tree import plot_tree
 #######################
 # Page configuration
 st.set_page_config(
-        page_title="Streamlit-AI Job Market Insight - Dashboard", # Replace this with your Project's Title
-        page_icon="assets/icon.png", # You may replace this with a custom icon or emoji related to your project
-        layout="wide",
-        initial_sidebar_state="expanded")
+    page_title="Streamlit-AI Job Market Insight - Dashboard", # Replace this with your Project's Title
+    page_icon="assets/icon.png", # You may replace this with a custom icon or emoji related to your project
+    layout="wide",
+    initial_sidebar_state="expanded")
 
 alt.themes.enable("dark")
 
