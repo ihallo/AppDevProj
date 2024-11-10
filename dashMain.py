@@ -939,10 +939,11 @@ elif st.session_state.page_selection == "machine_learning":
     """)
     try:
         rfc_feature_importance_df = st.session_state['importance_df']
+        st.dataframe(rfc_feature_importance_df, use_container_width=True, hide_index=True)
     except Exception as e:
         st.info(f" Load the Data Cleaning/Pre-processing first.")
 
-    st.dataframe(rfc_feature_importance_df, use_container_width=True, hide_index=True)
+    
     
     def feature_importance_plot1(feature_importance_df, width=500, height=500, key='default'):
     # Generate a bar plot for feature importances
@@ -1088,10 +1089,11 @@ elif st.session_state.page_selection == "machine_learning":
     
     try:
         rfc_feature_importance_df = st.session_state['importance_df_Growth']
+        st.dataframe(rfc_feature_importance_df, use_container_width=True, hide_index=True)
     except Exception as e:
         st.error(f" Load the Data Cleaning/Pre-processing first.")
 
-    st.dataframe(rfc_feature_importance_df, use_container_width=True, hide_index=True)
+    
     
     def feature_importance_plot2(feature_importance_df, width=500, height=500, key='default'):
     # Generate a bar plot for feature importances
@@ -1238,10 +1240,11 @@ elif st.session_state.page_selection == "machine_learning":
     
     try:
         rfc_feature_importance_df = st.session_state['importance_df_Salary']
+        st.dataframe(rfc_feature_importance_df, use_container_width=True, hide_index=True)
     except Exception as e:
         st.info(f" Load the Data Cleaning/Pre-processing first.")
 
-    st.dataframe(rfc_feature_importance_df, use_container_width=True, hide_index=True)
+    
     
     def feature_importance_plot3(feature_importance_df, width=500, height=500, key='default'):
     # Generate a bar plot for feature importances
