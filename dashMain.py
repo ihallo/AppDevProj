@@ -455,11 +455,13 @@ elif st.session_state.page_selection == "data_cleaning":
     lines = info_str.strip().split('\n')
     columns_info = []
 
-    # Extract only the rows containing column information, skipping unwanted headers
-    for line in lines[3:]:  # Start from the actual data rows, excluding headers
-        if "---" in line:  # Skip separator line
+    # Extract only the rows containing actual column information
+    for line in lines[3:]:  # Start from the actual data rows
+        if "---" in line or "memory usage" in line:  # Skip separator and summary lines
             continue
         parts = line.split(maxsplit=4)
+        if len(parts) < 4:  # Skip non-data lines that are too short
+            continue
         column_name = parts[1]
         non_null_count = parts[2]
         dtype = parts[-1]
