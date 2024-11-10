@@ -1603,47 +1603,47 @@ elif st.session_state.page_selection == "prediction":
         #Automation Risk Detection
         
         automation_classes_list = ['High', 'Low', 'Medium']
-        
-        # Button to detect the Automation Risk
-        if st.button('Detect Automation Risk (Accuracy: 43.33%)', key='dt_detectAutomation'):
-            # Prepare the input data for prediction
-            dt_input_data = [[job_encoded_value, industry_encoded_value, size_encoded_value, location_encoded_value, AiAdoption_encoded_value, skills_encoded_value, remote_encoded_value, dt_SalaryUSD, growth_encoded_value]] 
-            
-            # Predict the Automation
-            dt_prediction = clf_automation.predict(dt_input_data)
-            
-            # Display the prediction result
-            st.markdown(f'The predicted Automation Risk is: `{automation_classes_list[dt_prediction[0]]}`')
-            
-        #Growth Projection Detection
+        with st.expander('Legend', expanded=True):
+            # Button to detect the Automation Risk
+            if st.button('Detect Automation Risk (Accuracy: 43.33%)', key='dt_detectAutomation'):
+                # Prepare the input data for prediction
+                dt_input_data = [[job_encoded_value, industry_encoded_value, size_encoded_value, location_encoded_value, AiAdoption_encoded_value, skills_encoded_value, remote_encoded_value, dt_SalaryUSD, growth_encoded_value]] 
+                
+                # Predict the Automation
+                dt_prediction = clf_automation.predict(dt_input_data)
+                
+                # Display the prediction result
+                st.markdown(f'The predicted Automation Risk is: `{automation_classes_list[dt_prediction[0]]}`')
+                
+            #Growth Projection Detection
 
-        growth_classes_list = ['Decline', 'Growth', 'Stable']
-        
-        # Button to detect the Growth Projection
-        if st.button('Detect Growth Projection (Accuracy: 42%)', key='dt_detectGrowth'):
-            # Prepare the input data for prediction
-            dt_input_data = [[job_encoded_value, industry_encoded_value, size_encoded_value, location_encoded_value, AiAdoption_encoded_value, skills_encoded_value, remote_encoded_value, dt_SalaryUSD, automationRisk_encoded_value]] 
+            growth_classes_list = ['Decline', 'Growth', 'Stable']
             
-            # Predict the Growth
-            dt_prediction = clf_growthPrediction.predict(dt_input_data)
-            
-            # Display the prediction result
-            st.markdown(f'The predicted Growth Projection is: `{growth_classes_list[dt_prediction[0]]}`')
-            
-        #Salary Category Detection
+            # Button to detect the Growth Projection
+            if st.button('Detect Growth Projection (Accuracy: 42%)', key='dt_detectGrowth'):
+                # Prepare the input data for prediction
+                dt_input_data = [[job_encoded_value, industry_encoded_value, size_encoded_value, location_encoded_value, AiAdoption_encoded_value, skills_encoded_value, remote_encoded_value, dt_SalaryUSD, automationRisk_encoded_value]] 
+                
+                # Predict the Growth
+                dt_prediction = clf_growthPrediction.predict(dt_input_data)
+                
+                # Display the prediction result
+                st.markdown(f'The predicted Growth Projection is: `{growth_classes_list[dt_prediction[0]]}`')
+                
+            #Salary Category Detection
 
-        salary_classes_list = [ 'Mid Level', 'Senior Level']
-        
-        # Button to detect the Salary Category
-        if st.button('Detect Salary Category (Accuracy: 61.54%)', key='dt_salaryCategory'):
-            # Prepare the input data for prediction
-            dt_input_data = [[job_encoded_value, industry_encoded_value, location_encoded_value, skills_encoded_value]] 
+            salary_classes_list = [ 'Mid Level', 'Senior Level']
             
-            # Predict the Salary
-            dt_prediction = clf_salary2nd.predict(dt_input_data)
-            
-            # Display the prediction result
-            st.markdown(f'The predicted Salary Category is: `{salary_classes_list[dt_prediction[0]]}`')
+            # Button to detect the Salary Category
+            if st.button('Detect Salary Category (Accuracy: 61.54%)', key='dt_salaryCategory'):
+                # Prepare the input data for prediction
+                dt_input_data = [[job_encoded_value, industry_encoded_value, location_encoded_value, skills_encoded_value]] 
+                
+                # Predict the Salary
+                dt_prediction = clf_salary2nd.predict(dt_input_data)
+                
+                # Display the prediction result
+                st.markdown(f'The predicted Salary Category is: `{salary_classes_list[dt_prediction[0]]}`')
 
     # Create 3 Data Frames containing  5 rows for each 
     high_samples = dataset[dataset["Automation_Risk"] == "High"]
