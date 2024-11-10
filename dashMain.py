@@ -940,7 +940,7 @@ elif st.session_state.page_selection == "machine_learning":
     try:
         rfc_feature_importance_df = st.session_state['importance_df']
     except Exception as e:
-        st.error(f" Load the Data Cleaning/Pre-processing first.")
+        st.info(f" Load the Data Cleaning/Pre-processing first.")
 
     st.dataframe(rfc_feature_importance_df, use_container_width=True, hide_index=True)
     
@@ -1239,7 +1239,7 @@ elif st.session_state.page_selection == "machine_learning":
     try:
         rfc_feature_importance_df = st.session_state['importance_df_Salary']
     except Exception as e:
-        st.error(f" Load the Data Cleaning/Pre-processing first.")
+        st.info(f" Load the Data Cleaning/Pre-processing first.")
 
     st.dataframe(rfc_feature_importance_df, use_container_width=True, hide_index=True)
     
@@ -1387,7 +1387,7 @@ elif st.session_state.page_selection == "machine_learning":
     try:
         rfc_feature_importance_df = st.session_state['importance_df_Salary2nd']
     except Exception as e:
-        st.error(f" Load the Data Cleaning/Pre-processing first.")
+        st.info(f" Load the Data Cleaning/Pre-processing first.")
     
 
     st.dataframe(rfc_feature_importance_df, use_container_width=True, hide_index=True)
