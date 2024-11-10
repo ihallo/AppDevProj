@@ -444,12 +444,14 @@ elif st.session_state.page_selection == "data_cleaning":
     # Your content for the DATA CLEANING / PREPROCESSING page goes here
     
     st.subheader("DataFrame Information")
+    st.code("dataset.info()")
+    
     buffer = StringIO()  
     dataset.info(buf=buffer)  
     info = buffer.getvalue()  
     st.text(info)
 
-    st.info("As we can see from the DataFrame information, there are no null values in any of the data types. Based on this, we can conclude that there are no data columns that need to be dropped.")
+    st.info("As we can see from the DataFrame information (dataset.info()), there are no null values in any of the data types. Based on this, we can conclude that there are no data columns that need to be dropped.")
 
     st.subheader("Null Values of each Attributes")
     st.code("dataset.isna().sum()")
