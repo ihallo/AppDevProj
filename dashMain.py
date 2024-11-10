@@ -1603,7 +1603,7 @@ elif st.session_state.page_selection == "prediction":
         #Automation Risk Detection
         
         automation_classes_list = ['High', 'Low', 'Medium']
-        with st.expander('Legend', expanded=True):
+        with st.expander('Pick which to predict: ', expanded=True):
             # Button to detect the Automation Risk
             if st.button('Detect Automation Risk (Accuracy: 43.33%)', key='dt_detectAutomation'):
                 # Prepare the input data for prediction
