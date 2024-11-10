@@ -457,15 +457,15 @@ elif st.session_state.page_selection == "data_cleaning":
 
     # Extract only the rows containing actual column information
     for line in lines[3:]:  # Start from the actual data rows
-        if "---" in line or "memory usage" in line:  # Skip separator and summary lines
+        if "---" in line or "memory usage" in line or "Column Non-Null Dtype" in line:  # Skip unwanted lines
             continue
         parts = line.split(maxsplit=4)
-        if len(parts) < 4:  # Skip non-data lines that are too short
+        if len(parts) < 4:  # Skip rows that don't have enough parts
             continue
         column_name = parts[1]
         non_null_count = parts[2]
         dtype = parts[-1]
-        
+        columns_info.append([column_name, non_null_count, dtype])
 
     # Create a DataFrame for a clean table display
     columns_df = pd.DataFrame(columns_info, columns=["Column Name", "Non-Null Count", "Data Type"])
