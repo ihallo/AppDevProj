@@ -1453,7 +1453,7 @@ elif st.session_state.page_selection == "machine_learning":
     dt_automation_image = Image.open('assets/salary2ndTree.png')
     st.image(dt_automation_image, caption='Random Forest classifier - Salary Category 2nd Training- Tree Plot')
     
-    st.info("This graph shows **all of the decision trees** made by our **Random Forest Classifier** model for the Salary Category which then forms a **Forest**.")
+    st.info("This graph shows **all of the decision trees** made by our **Random Forest Classifier** model for the Salary Category 2nd Training which then forms a **Forest**.")
     
     st.subheader("Single Tree")
     st.code("""
