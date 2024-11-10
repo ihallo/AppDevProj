@@ -1091,7 +1091,7 @@ elif st.session_state.page_selection == "machine_learning":
         rfc_feature_importance_df = st.session_state['importance_df_Growth']
         st.dataframe(rfc_feature_importance_df, use_container_width=True, hide_index=True)
     except Exception as e:
-        st.error(f" Load the Data Cleaning/Pre-processing first.")
+        st.info(f" Load the Data Cleaning/Pre-processing first.")
 
     
     
