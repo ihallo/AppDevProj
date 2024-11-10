@@ -937,11 +937,10 @@ elif st.session_state.page_selection == "machine_learning":
     importance_df = importance_df.sort_values(by='Importance', ascending=False).reset_index(drop=True)
     
     """)
-    
-    if 'importance_df' in st.session_state and st.session_state['importance_df'] is not None:
+    try:
         rfc_feature_importance_df = st.session_state['importance_df']
-    else: 
-        rfc_feature_importance_df = ""
+    except Exception as e:
+        st.error(f" Load the Data Cleaning/Pre-processing first.")
 
     st.dataframe(rfc_feature_importance_df, use_container_width=True, hide_index=True)
     
@@ -1087,7 +1086,10 @@ elif st.session_state.page_selection == "machine_learning":
     
     """)
     
-    rfc_feature_importance_df = st.session_state['importance_df_Growth']
+    try:
+        rfc_feature_importance_df = st.session_state['importance_df_Growth']
+    except Exception as e:
+        st.error(f" Load the Data Cleaning/Pre-processing first.")
 
     st.dataframe(rfc_feature_importance_df, use_container_width=True, hide_index=True)
     
@@ -1234,7 +1236,10 @@ elif st.session_state.page_selection == "machine_learning":
     
     """)
     
-    rfc_feature_importance_df = st.session_state['importance_df_Salary']
+    try:
+        rfc_feature_importance_df = st.session_state['importance_df_Salary']
+    except Exception as e:
+        st.error(f" Load the Data Cleaning/Pre-processing first.")
 
     st.dataframe(rfc_feature_importance_df, use_container_width=True, hide_index=True)
     
@@ -1379,7 +1384,11 @@ elif st.session_state.page_selection == "machine_learning":
     
     """)
     
-    rfc_feature_importance_df = st.session_state['importance_df_Salary2nd']
+    try:
+        rfc_feature_importance_df = st.session_state['importance_df_Salary2nd']
+    except Exception as e:
+        st.error(f" Load the Data Cleaning/Pre-processing first.")
+    
 
     st.dataframe(rfc_feature_importance_df, use_container_width=True, hide_index=True)
     
