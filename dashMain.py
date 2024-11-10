@@ -736,14 +736,16 @@ elif st.session_state.page_selection == "data_cleaning":
 
     st.session_state['importance_df_Salary'] = importance_df_Salary.sort_values(by='Importance_Salary', ascending=False).reset_index(drop=True)
 
-    st.subheader("Creating a new data set for the 2nd training.")
+ st.subheader("Creating a new data set for the 2nd training.")
     st.code("""new_df = dataset""")
     new_df = dataset
     st.info("Creating a copy of the original dataset for further processing.")
 
-    st.write(new_df.head())
-    st.info("Displayed the first few rows of the dataset to verify its structure and contents.")
+    #st.write(new_df.head())
+    new_df.head()
+    #st.info("Displayed the first few rows of the dataset to verify its structure and contents.")
 
+    st.code( """ salaryCategory_counts = new_df['Salary_Category'].value_counts() """ )
     salaryCategory_counts = new_df['Salary_Category'].value_counts()
     st.write(salaryCategory_counts)
     st.info(""" 
@@ -758,12 +760,14 @@ elif st.session_state.page_selection == "data_cleaning":
 
     # Reset the index if needed
     new_df_filtered = new_df_filtered.reset_index(drop=True)
-    st.write(new_df_filtered.head())
-    st.info("Reset the index of the filtered DataFrame and displayed the first few rows to ensure only selected categories are present.")
+    new_df_filtered.head()
+    #st.write(new_df_filtered.head())
+    #st.info("Reset the index of the filtered DataFrame and displayed the first few rows to ensure only selected categories are present.")
 
+    st.code( """ salaryCategory_counts = new_df_filtered['Salary_Category'].value_counts() """ )
     salaryCategory_counts = new_df_filtered['Salary_Category'].value_counts()
     st.write(salaryCategory_counts)
-    st.info("Displayed the count of salary categories within the filtered dataset.")
+    st.info("Displayed the count of salary categories within the new filtered dataset.")
 
     # Initialize an empty dataframe to store balanced data
     balanced_new_df = pd.DataFrame()
@@ -827,11 +831,11 @@ elif st.session_state.page_selection == "data_cleaning":
     st.code("""features = ['Job_encoded', 'Industry_encoded', 'Location_encoded', 'Skills_encoded']
     X5 = df_data[features]
     Y5 = df_data['Salary_encoded']""")
-    st.info("Defined the feature set and target variable for model training.")
+    #st.info("Defined the feature set and target variable for model training.")
     
     X5_train, X5_test, Y5_train, Y5_test = train_test_split(X5, Y5, test_size=0.3, random_state=42)
     st.code("""X5_train, X5_test, Y5_train, Y5_test = train_test_split(X5, Y5, test_size=0.3, random_state=42)""")
-    st.info("Split the dataset into training and testing sets, with 70% for training to enhance model learning.")
+    #st.info("Split the dataset into training and testing sets, with 70% for training to enhance model learning.")
 
     st.write('Training Features (X5_train):')
     st.dataframe(X5_train)
@@ -869,6 +873,7 @@ elif st.session_state.page_selection == "data_cleaning":
 
     st.session_state['importance_df_Salary2nd'] = importance_df_Salary2nd.sort_values(by='Importance_Salary2nd', ascending=False).reset_index(drop=True)
 
+   
     # Machine Learning Page
 elif st.session_state.page_selection == "machine_learning":
     
