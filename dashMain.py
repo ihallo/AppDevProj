@@ -456,7 +456,7 @@ elif st.session_state.page_selection == "data_cleaning":
     columns_info = []
 
     # Extract only the rows containing column information
-    for line in lines[3:-1]:  # Skips header and summary rows
+    for line in lines[3:-2]:  # Skips header and summary rows
         parts = line.split(maxsplit=4)
         column_name = parts[1]
         non_null_count = parts[2]
