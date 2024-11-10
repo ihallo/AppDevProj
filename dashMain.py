@@ -443,28 +443,30 @@ elif st.session_state.page_selection == "data_cleaning":
 
     # Your content for the DATA CLEANING / PREPROCESSING page goes here
     
+    # Displaying DataFrame information
     st.subheader("DataFrame Information")
 
-    # Create a buffer to capture the .info() output
+    # Capture .info() output into a buffer
     buffer = StringIO()
     dataset.info(buf=buffer)
     info_str = buffer.getvalue()
 
-    # Process the .info() string output into a DataFrame
+    # Process the .info() output to keep only relevant rows
     lines = info_str.strip().split('\n')
     columns_info = []
 
-    for line in lines[3:-1]:  # Skipping the header and summary lines
-        parts = line.split()
+    # Extract only the rows containing column information
+    for line in lines[3:-1]:  # Skips header and summary rows
+        parts = line.split(maxsplit=4)
         column_name = parts[1]
         non_null_count = parts[2]
         dtype = parts[-1]
         columns_info.append([column_name, non_null_count, dtype])
 
-    # Create a DataFrame for better visualization
+    # Create a DataFrame for a clean table display
     columns_df = pd.DataFrame(columns_info, columns=["Column Name", "Non-Null Count", "Data Type"])
 
-    # Display as a table in Streamlit
+    # Display the cleaned table in Streamlit
     st.table(columns_df)
 
     st.info("As we can see from the DataFrame information, there are no null values in any of the data types. Based on this, we can conclude that there are no data columns that need to be dropped.")
