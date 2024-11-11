@@ -640,6 +640,9 @@ elif st.session_state.page_selection == "data_cleaning":
     train_accuracy = clf_automation.score(X1_train, Y1_train) #train daTa
     test_accuracy = clf_automation.score(X1_test, Y1_test) #test daTa
     
+    st.write(train_accuracy)
+    st.write(test_accuracy)
+    
     importance_df = pd.DataFrame({
         'Feature': X1.columns,
         'Importance': clf_automation.feature_importances_
