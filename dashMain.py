@@ -640,8 +640,6 @@ elif st.session_state.page_selection == "data_cleaning":
     train_accuracy = clf_automation.score(X1_train, Y1_train) #train daTa
     test_accuracy = clf_automation.score(X1_test, Y1_test) #test daTa
     
-    st.write(train_accuracy)
-    st.write(test_accuracy)
     
     importance_df = pd.DataFrame({
         'Feature': X1.columns,
@@ -928,7 +926,7 @@ elif st.session_state.page_selection == "machine_learning":
     st.write("""
 
     **Train Accuracy:** 100.00%\n
-    **Test Accuracy:** 43.33%      
+    **Test Accuracy:** 46%      
              
     """)
     
@@ -1608,7 +1606,7 @@ elif st.session_state.page_selection == "prediction":
         automation_classes_list = ['High', 'Low', 'Medium']
         with st.expander('Pick which to predict: ', expanded=True):
             # Button to detect the Automation Risk
-            if st.button('Detect Automation Risk (Accuracy: 43.33%)', key='dt_detectAutomation'):
+            if st.button('Detect Automation Risk (Accuracy: 46.00%)', key='dt_detectAutomation'):
                 # Prepare the input data for prediction
                 dt_input_data = [[job_encoded_value, industry_encoded_value, size_encoded_value, location_encoded_value, AiAdoption_encoded_value, skills_encoded_value, remote_encoded_value, dt_SalaryUSD, growth_encoded_value]] 
                 
@@ -1623,7 +1621,7 @@ elif st.session_state.page_selection == "prediction":
             growth_classes_list = ['Decline', 'Growth', 'Stable']
             
             # Button to detect the Growth Projection
-            if st.button('Detect Growth Projection (Accuracy: 42%)', key='dt_detectGrowth'):
+            if st.button('Detect Growth Projection (Accuracy: 42.00%)', key='dt_detectGrowth'):
                 # Prepare the input data for prediction
                 dt_input_data = [[job_encoded_value, industry_encoded_value, size_encoded_value, location_encoded_value, AiAdoption_encoded_value, skills_encoded_value, remote_encoded_value, dt_SalaryUSD, automationRisk_encoded_value]] 
                 
@@ -1729,8 +1727,6 @@ elif st.session_state.page_selection == "prediction":
         st.dataframe(senior_samples, use_container_width=True, hide_index=True)
         
         
-    
-        
 # Conclusions Page
 elif st.session_state.page_selection == "conclusion":
     st.header("📝 Conclusion")
@@ -1747,7 +1743,7 @@ elif st.session_state.page_selection == "conclusion":
     Different distributions for Job_Growth_Projection, Automation_Risk, and Salary_USD were found using an exploratory analysis. Higher salary in particular industries and company sizes, as well as variations in automation risk among AI-adopting firms, are some of the trends noted. AI_Adoption_Level's distribution across job categories demonstrates how adoption levels affect automation risk, particularly for tasks that are heavily automated.
 
     #### 3. ⚙️ **Random Forest Classifier (Automation Risk Prediction)**:
-    The Random Forest Classifier model trained on Automation_Risk achieved high accuracy on training data (100%) but showed a notable performance drop (43.33%) on test data. Feature importance analysis indicated *Salary_USD* as the most influential feature, contributing 22%, followed by *Location_encoded* and *Skills_encoded* at approximately 13% each, reflecting the impact of salary and job location on automation risk.
+    The Random Forest Classifier model trained on Automation_Risk achieved high accuracy on training data (100%) but showed a notable performance drop (46%) on test data. Feature importance analysis indicated *Salary_USD* as the most influential feature, contributing 22%, followed by *Location_encoded* and *Skills_encoded* at approximately 13% each, reflecting the impact of salary and job location on automation risk.
     
     #### 4. 🚀 **Random Forest Classifier (Growth Prediction)**:
     For Growth Prediction, the Random Forest Classifier displayed similar results, with 100% accuracy on training data and 42% on test data. Here, *Salary_USD* again emerged as the most significant predictor at 22%, followed by *Location_encoded* (17%) and *Industry_encoded* (14%), suggesting that job growth is influenced by salary and industry context.
