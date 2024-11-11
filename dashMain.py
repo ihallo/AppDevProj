@@ -710,8 +710,8 @@ elif st.session_state.page_selection == "data_cleaning":
     X4 = df_data[features]
     Y4 = df_data['Salary_encoded']""")
     
-    X4_train, X4_test, Y4_train, Y4_test = train_test_split(X4, Y4, test_size=0.1, random_state=42)
-    st.code("""X4_train, X4_test, Y4_train, Y4_test = train_test_split(X4, Y4, test_size=0.1, random_state=42)""")
+    X4_train, X4_test, Y4_train, Y4_test = train_test_split(X4, Y4, test_size=0.3, random_state=42)
+    st.code("""X4_train, X4_test, Y4_train, Y4_test = train_test_split(X4, Y4, test_size=0.3, random_state=42)""")
 
     st.write('Training Features (X4_train):')
     st.dataframe(X4_train)
@@ -836,7 +836,7 @@ elif st.session_state.page_selection == "data_cleaning":
     Y5 = df_data['Salary_encoded']""")
     #st.info("Defined the feature set and target variable for model training.")
     
-    X5_train, X5_test, Y5_train, Y5_test = train_test_split(X5, Y5, test_size=0.1, random_state=42)
+    X5_train, X5_test, Y5_train, Y5_test = train_test_split(X5, Y5, test_size=0.3, random_state=42)
     st.code("""X5_train, X5_test, Y5_train, Y5_test = train_test_split(X5, Y5, test_size=0.1, random_state=42)""")
     #st.info("Split the dataset into training and testing sets, with 70% for training to enhance model learning.")
 
