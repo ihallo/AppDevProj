@@ -15,7 +15,7 @@ A Streamlit web application that performs Exploratory Data Analysis (EDA), Data 
 ### 🔗 Links:
 
 - 🌐 [Streamlit Link](https://abnederio-datasciproj-dashmain-wnmtxh.streamlit.app/)
-- 📗 [Google Colab Notebook](https://colab.research.google.com/drive/1ZdLgzKjkpj3I7VR9rSFYE653MVEZ6Z1u#scrollTo=LqM83prKuuEF)
+- 📗 [Google Colab Notebook](https://colab.research.google.com/drive/1FEJQL-8x-ZlChg75fRNxULpZtuzIQcid#scrollTo=pwoDqaFnYav3)
 
 ### 📊 Dataset:
 
