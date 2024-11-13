@@ -917,6 +917,8 @@ elif st.session_state.page_selection == "machine_learning":
     st.code("""
     * clf_automation = joblib.load('models/RFC_Automation.joblib')
     * clf_automation.fit(X1_train, Y1_train)
+    
+    * y_pred = clf_automation.predict(X1_test)
     """)
     
     st.subheader("Model Evaluation")
@@ -1066,6 +1068,8 @@ elif st.session_state.page_selection == "machine_learning":
     st.code("""
     * clf_growthPrediction = joblib.load('models/RFC_GrowthPrediction.joblib')
     * clf_growthPrediction.fit(X2_train, Y2_train)
+    
+    * y_pred = clf_growthPrediction.predict(X2_test)
     """)
     
     st.subheader("Model Evaluation")
@@ -1217,6 +1221,8 @@ elif st.session_state.page_selection == "machine_learning":
     st.code("""
     * clf_salary = joblib.load('models/RFC_Salary.joblib')
     * clf_salary.fit(X4_train, Y4_train)
+    
+    * y_pred = clf_salary.predict(X4_test)
     """)
     
     st.subheader("Model Evaluation")
@@ -1366,6 +1372,8 @@ elif st.session_state.page_selection == "machine_learning":
     st.code("""
     * clf_salary2nd = joblib.load('models/RFC_salary2nd.joblib')
     * clf_salary2nd.fit(X5_train, Y5_train)
+    
+    * y_pred = clf_salary2nd.predict(X5_test)
     """)
     
     st.subheader("Model Evaluation")
