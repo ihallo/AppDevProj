@@ -597,6 +597,7 @@ elif st.session_state.page_selection == "data_cleaning":
             # Display the DataFrame in Streamlit
         st.write(salary_mapping_df)
     
+    st.info("We encoded the columns of the dataset so that it can be properly use for our machine learning model, which is Random Forest Classifier. ")
     st.markdown("---")
     
     #Train-Test split
