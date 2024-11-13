@@ -460,6 +460,8 @@ elif st.session_state.page_selection == "data_cleaning":
     st.info("As we can see from the DataFrame information (dataset.info()), there are no null values in any of the data types. Based on this, we can conclude that there are no data columns that need to be dropped.")
 
     st.subheader("Null Values of each Attributes")
+    st.code("dataset.isna()")
+    st.write(dataset.isna())
     st.code("dataset.isna().sum()")
     st.write(dataset.isna().sum())
     
