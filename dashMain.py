@@ -871,7 +871,6 @@ elif st.session_state.page_selection == "data_cleaning":
     test_accuracy = clf_salary2nd.score(X5_test, Y5_test) #test daTa
   
     st.info("""Displayed the training (99.17%) and test accuracy (61.54%) to assess model performance.""")
-    st.header("💡 Insights")
     st.info("""
     - The initial test accuracy for the Salary Category is 58% but by removing the Entry Level due to its low count, we managed to improve the accuracy to 61.54%.
     - The accuracy could be further improved with more data.""")
