@@ -65,6 +65,11 @@ with st.sidebar:
 
     if st.button("Conclusion", use_container_width=True, on_click=set_page_selection, args=('conclusion',)):
         st.session_state.page_selection = "conclusion"
+        
+    #Project Details
+    st.markdown("📊 [Dataset](https://www.kaggle.com/datasets/uom190346a/ai-powered-job-market-insights?fbclid=IwZXh0bgNhZW0CMTEAAR1Un4XKwOuQJwrrf3URa1_izEZDgxCqn7Xy8HCJASGhkOS5tUUrGG2BcSM_aem_TiYvlOVatXZWnYpMmYcdVA)")
+    st.markdown("📗 [Google Colab Notebook](https://colab.research.google.com/drive/1FEJQL-8x-ZlChg75fRNxULpZtuzIQcid#scrollTo=pwoDqaFnYav3)")
+    st.markdown("🐙 [GitHub Repository](https://github.com/Abnederio/DataSciProj)")
 
     # Project Members
     st.subheader("Members")
@@ -238,6 +243,7 @@ elif st.session_state.page_selection == "dataset":
         st.markdown(f"**{column}:** {description}")  
     
     st.subheader("Descriptive Statistics")
+    st.code("dataset.describe()")
     st.dataframe(dataset.describe(), use_container_width=True)
     st.info("The dataset includes 500 salary data points with an average salary of USD 91,222.39. Salaries range from a minimum of USD 31,969.53 to a maximum of USD 155,209.82. The standard deviation is USD 20,504.29, indicating moderate variability. The median salary is USD 91,998.20, with 25% of salaries below USD 78,511.51 and 75% below USD 103,971.28.")
 
