@@ -872,6 +872,7 @@ elif st.session_state.page_selection == "data_cleaning":
     st.info("""
     - Displayed the training and testing sets for both features and target variables.
     - Trained the model on the training data.
+    - To enhance the accuracy of our machine learning model given our limited dataset, we allocated 70% of the data for training and 30% for testing.
     - Generated predictions on the test data.""")
     
     train_accuracy = clf_salary2nd.score(X5_train, Y5_train) #train daTa
