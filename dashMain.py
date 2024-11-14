@@ -1251,6 +1251,7 @@ elif st.session_state.page_selection == "machine_learning":
     **Test Accuracy:** 58.00%      
              
     """)
+    st.info("""We’re using a Random Forest Classifier to predict salary categories. The model achieves 100% accuracy on the training data, indicating it has learned those patterns thoroughly. However, with only 58% accuracy on the test data, it may be overfitting—doing well on familiar data but not generalizing effectively to new data. """)
     
     st.subheader("Feature Importance")
     
@@ -1402,6 +1403,7 @@ elif st.session_state.page_selection == "machine_learning":
     **Test Accuracy:** 61.54%      
              
     """)
+    st.info(""" We’re training a second Random Forest Classifier to predict salary categories. The model achieves 99.17% accuracy on the training data, showing it has learned the patterns well. However, with 61.54% accuracy on the test data, it may still be somewhat overfitting, performing well on known data but less effectively on new data.""")
     
     st.subheader("Feature Importance")
     
