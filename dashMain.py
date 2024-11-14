@@ -483,12 +483,14 @@ elif st.session_state.page_selection == "data_cleaning":
     with col[0]:
         cat_col = [col for col in dataset.columns if dataset[col].dtype == 'object']
         st.subheader('Categorical Columns')
+        st.code("dataset[cat_col].nunique()")
         st.write(cat_col)
 
     # Numerical columns
     with col[1]:
         num_col = [col for col in dataset.columns if dataset[col].dtype != 'object']
         st.subheader('Numerical Columns')
+        st.code("dataset[num_col].nunique()")
         st.write(num_col)
 
     # Divider for better visual separation
