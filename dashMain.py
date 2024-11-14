@@ -1097,6 +1097,7 @@ elif st.session_state.page_selection == "machine_learning":
     **Test Accuracy:** 42.00%      
              
     """)
+    st.info(""" We’re using a Random Forest Classifier to predict growth. The model achieves 100% accuracy on the training data, showing that it learned those patterns well. However, it only reaches 42% accuracy on the test data, suggesting potential overfitting, meaning it performs well on known data but struggles to generalize to new, unseen data.""")
     
     st.subheader("Feature Importance")
     
