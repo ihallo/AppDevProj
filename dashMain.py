@@ -483,14 +483,12 @@ elif st.session_state.page_selection == "data_cleaning":
     with col[0]:
         cat_col = [col for col in dataset.columns if dataset[col].dtype == 'object']
         st.subheader('Categorical Columns')
-        st.code("dataset[cat_col].nunique()")
         st.write(cat_col)
 
     # Numerical columns
     with col[1]:
         num_col = [col for col in dataset.columns if dataset[col].dtype != 'object']
         st.subheader('Numerical Columns')
-        st.code("dataset[num_col].nunique()")
         st.write(num_col)
 
     # Divider for better visual separation
@@ -503,12 +501,14 @@ elif st.session_state.page_selection == "data_cleaning":
 
     with col[0]:
         st.subheader('Categorical Columns Unique Counts')
+        st.code("dataset[cat_col].nunique()")
         cat_unique_counts = dataset[cat_col].nunique().reset_index()
         cat_unique_counts.columns = ['Column', 'Unique Counts']
         st.dataframe(cat_unique_counts)
 
     with col[1]:
         st.subheader('Numerical Columns Unique Counts')
+        st.code("dataset[num_col].nunique()")
         num_unique_counts = dataset[num_col].nunique().reset_index()
         num_unique_counts.columns = ['Column', 'Unique Counts']
         st.dataframe(num_unique_counts)
