@@ -237,7 +237,8 @@ elif st.session_state.page_selection == "dataset":
         "Required_Skills": "The primary skills required for the job role.",
         "Salary_USD": "The job offers an annual pay in USD.",
         "Remote_Friendly": "Determines whether the job may be completed remotely.",
-        "Job_Growth_Projection": "The expected growth or drop in the job position over the following five years."
+        "Job_Growth_Projection": "The expected growth or drop in the job position over the following five years.",
+        "Salary_Category": "The categorized version of Salary_USD."
     }
     for column, description in column_descriptions.items():
         st.markdown(f"**{column}:** {description}")  
