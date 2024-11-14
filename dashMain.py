@@ -692,6 +692,7 @@ elif st.session_state.page_selection == "data_cleaning":
     st.info("""
     *  We used `.head()` to give us a preview of the `X2_test` and `X2_train` data.
     *  We used `.shape` to give us the dimensions of the `X2_test` and `X2_train` data.
+    *  To enhance the accuracy of our machine learning model given our limited dataset, we allocated 90% of the data for training and 10% for testing.
     * Same case with the Y2_train and Y2_test.
 
     As you can see, the test shape has a lower number than the training shape. Since we should always allot more data to training for the machine learning model to practice.
