@@ -945,6 +945,7 @@ elif st.session_state.page_selection == "machine_learning":
     **Test Accuracy:** 46%      
              
     """)
+    st.info("""We’re using a Random Forest Classifier to predict automation risk. The model achieves 100% accuracy on the training data, indicating it has learned those patterns very well. However, it only reaches 46% accuracy on the test data, suggesting it may be overfitting, performing well on the data it has seen but not generalizing effectively to new data.""")
     
     st.subheader("Feature Importance")
     
