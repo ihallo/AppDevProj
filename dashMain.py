@@ -470,7 +470,7 @@ elif st.session_state.page_selection == "data_cleaning":
     st.dataframe(duplicates) """)
     duplicates = dataset[dataset.duplicated(keep=False)]
     st.dataframe(duplicates)
-    st.code( """ {dataset.duplicated().sum()}")  
+    st.code( """ dataset.duplicated().sum()  
     """ )
     st.write(f"### Number of duplicate rows: {dataset.duplicated().sum()}")  
     st.info("There are no duplicate rows found on the dataframe.")
