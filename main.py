@@ -124,9 +124,9 @@ df_data['Temperature_encoded'] = temperature_encoder.fit_transform(df['Temperatu
 
 st.write("# Prediction")
 
-features = ['Coffee_encoded', 'Caffeine_encoded', 'Sweetness_encoded', 'Type_encoded', 'Roast_encoded', 'Flavor_encoded', 'Milk_encoded', 'Weather_encoded', 'Temperature_encoded']
+features = ['Caffeine_encoded', 'Sweetness_encoded', 'Type_encoded', 'Roast_encoded', 'Flavor_encoded', 'Milk_encoded', 'Weather_encoded', 'Temperature_encoded', 'Bitterness_encoded']
 X1 = df_data[features]
-Y1 = df_data['Bitterness_encoded']
+Y1 = df_data['Coffee_encoded']
 
 st.subheader('Features (X1):')
 st.write(X1)
@@ -155,11 +155,11 @@ X1[num_col_] = scaler.fit_transform(X1[num_col_])
 st.write('Scaled Features (X1):')
 st.dataframe(X1)
 
-st.subheader('Automation Risk Distribution')
+st.subheader('Coffee Name Distribution')
 
-bitterness_list = df['Bitterness Level'].unique().tolist()
-bitterness_counts = df['Bitterness Level'].value_counts()
-bitterness_counts_list = bitterness_counts.tolist()
+coffee_list = df['Coffee Name'].unique().tolist()
+coffee_counts = df['Coffee Name'].value_counts()
+coffee_counts_list = coffee_counts.tolist()
 
 X1_train, X1_test, Y1_train, Y1_test = train_test_split(X1, Y1, test_size=0.1, random_state=42)
 
@@ -222,25 +222,7 @@ st.code("""importance_df = importance_df.sort_values(by='Importance', ascending=
 st.write("### importance_df:")
 st.write(importance_df)
 
-st.write("### **Observation**")
-st.markdown("""
-*  With the use of feature_importance we can identify each columns weighs in the model's capability of making decisions.
-*  We can see from the results that Salary, Industry, Job Title, Location, and Skills weighs significantly more than the rest of the columns as we trained.
-""")
-
 fig = plt.figure(figsize=(20, 10))
-
-st.write("### Tree plot:")
-st.code("""
-       * plt.figure(figsize=(20, 10))
-       * tree.plot_tree(clf.estimators_[0], filled=True, feature_names=features, class_names=automationRisk_list, rounded=True, proportion=True)
-""")
-
-tree.plot_tree(clf.estimators_[0], filled=True, feature_names=features, class_names=automationRisk_list, rounded=True, proportion=True)
-st.pyplot(fig)
-
-st.write("### **Observation**")
-st.write("The tree will help us visualize how the RFC decides.")
 
 st.subheader("Training a better model.")
 st.write("Our goal now is to balance out all of the classes.")
